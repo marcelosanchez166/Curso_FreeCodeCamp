@@ -1,0 +1,4145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+
+<style>
+
+    .red-text {
+      color: red;
+    }
+  
+    h2 {
+      font-family: Lobster, monospace;
+      text-transform:uppercase;
+    }
+  
+    p {
+      font-size: 16px;
+      font-family: monospace;
+    }
+  
+    .thick-green-border {
+      /* Color del borde que tendra el elemento */
+      border-color: green;
+      /* Ancho que tendra el elemento en este caso el borde */
+      border-width: 10px;
+      /* border-style le da la forma a la linea del border ya sea continua o cortada la linea entre otro */
+      border-style: solid;
+      /* Border-radius darle forma redonda a las imagenes o al elemento */
+      border-radius: 50%;
+    }
+  
+    .smaller-image {
+      width: 100px;
+    }
+  
+    .silver-background {
+      background-color: silver;
+    }
+    #cat-photo-form{
+      background-color:green;
+    }
+
+    /* Paddig border, and margin. */
+    .injected-text {
+    margin-bottom: -25px;
+    text-align: center;
+  }
+
+  .box {
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
+    text-align: center;
+  }
+
+  .yellow-box {
+    background-color: yellow;
+    padding: 10px;
+  }
+
+/* CSS le permite controlar el margen de los cuatro lados individuales de un elemento con las propiedades
+margin-top, margin-right, margin-bottom, and margin-left */
+  .red-box {
+    background-color: crimson;
+    color: #fff;
+    padding: 20px;
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+
+/* CSS le permite controlar el relleno de los cuatro lados individuales de un elemento con las propiedades 
+padding-top, padding-right, padding-bottom y padding-left. */
+  .blue-box {
+    background-color: blue;
+    color: #fff;
+    padding: 20px;
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+  }
+
+
+/* En lugar de especificar las propiedades padding-top, padding-right, padding-bottom y padding-left de un elemento 
+individualmente, puede especificarlas todas en una línea, así: padding: 10px 20px 10px 20px; Estos cuatro valores 
+funcionan como un reloj: arriba, derecha, abajo, izquierda y producirán exactamente el mismo resultado que si se usaran 
+las instrucciones de relleno específicas del lado. */
+.blue-box {
+    background-color: blue;
+    color: #fff;
+    /* 1- padding-top, 2- padding-right, 3- padding-bottom, 4-padding-left */
+    padding: 40px 20px 20px 40px;
+  }
+
+/* En lugar de especificar las propiedades margin-top, margin-right, margin-bottom y margin-left de un elemento individualmente, 
+puede especificarlas todas en una línea, así: margin: 10px 20px 10px 20px; Estos cuatro valores funcionan como un reloj: 
+arriba, derecha, abajo, izquierda */
+.blue-box {
+    background-color: blue;
+    color: #fff;
+    margin: 40px 20px 20px 40px;
+  }
+
+/* Para este desafío, utilizará el selector de atributos [attr=value] para diseñar las casillas de verificación 
+en CatPhotoApp. Este selector combina y aplica estilos a elementos con un valor de atributo específico. Por ejemplo, 
+el siguiente código cambia los márgenes de todos los elementos con el tipo de atributo y el valor correspondiente de radio: */
+  [type='checkbox'] {
+  margin: 10px 0px 15px 0px;
+}
+
+
+/* Al tener clases y ids para un etiqueta por priridad el elemto tomara los cambios css id y si no hay id para dicho elemento
+se tomara la ultima clase que tenga la etiqueta, pero si yo le pongo el estilo directamente a la etiqueta sera la prioridad
+Pero al poner la palabra clave !important en la clase en los estilos lo tomara como principal aun si tiene la etiqueta algun id o se haya 
+declarado el stilo en la propia etiqueta*/
+/* .blue-box {
+    background-color: blue;
+    color: #fff !important;
+    margin: 40px 20px 20px 40px;
+  } */
+  .blue-text {
+    color: blue ;
+  }
+  .pink-text {
+    color: pink !important;
+  }
+#orange-text{
+    color: orange;
+  }
+
+
+  </style>
+</head>
+
+<body>
+
+<h2 class="red-text">CatPhotoApp</h2>
+  <main>
+
+    <h1 id="orange-text"  class="pink-text blue-text" style="color: black;">Hello World!</h1>
+    <p class="red-text">Click here to view more <a href="#">cat photos</a>.</p>
+  
+    <a href="#"><img class="smaller-image thick-green-border" src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg" alt="A cute orange cat lying on its back."></a>
+  
+    <div class="silver-background">
+      <p>Things cats love:</p>
+      <ul>
+        <li>cat nip</li>
+        <li>laser pointers</li>
+        <li>lasagna</li>
+      </ul>
+      <p>Top 3 things cats hate:</p>
+      <ol>
+        <li>flea treatment</li>
+        <li>thunder</li>
+        <li>other cats</li>
+      </ol>
+    </div>
+
+    <form action="https://freecatphotoapp.com/submit-cat-photo" id="cat-photo-form">
+      <label><input type="radio" name="indoor-outdoor" checked> Indoor</label>
+      <label><input type="radio" name="indoor-outdoor"> Outdoor</label><br>
+      <label><input type="checkbox" name="personality" checked> Loving</label>
+      <label><input type="checkbox" name="personality"> Lazy</label>
+      <label><input type="checkbox" name="personality"> Energetic</label><br>
+      <input type="text" placeholder="cat photo URL" required>
+      <button type="submit">Submit</button>
+    </form>
+    <h5 class="injected-text">margin</h5>
+
+<div class="box yellow-box">
+  <h5 class="box red-box">padding</h5>
+  <h5 class="box blue-box">padding</h5>
+</div>
+  </main>
+</body>
+</html>
+
+<!-- El texto suele ser una gran parte del contenido web. CSS tiene varias opciones sobre cómo alinearlo con la propiedad text-align.
+alineación de texto: justificar; espacia el texto para que cada línea tenga el mismo ancho.
+alineación de texto: centro; centra el texto
+alineación de texto: derecha; alinea el texto a la derecha
+Y alineación de texto: izquierda; (el valor predeterminado) alinea el texto a la izquierda.
+<style>
+  h4 {
+    text-align: center;
+    /*El valor rgba da la transparencia para hacer enfasis en algun titulo o palabras r=red, g=green, b=blue, a=nivel de opasidad*/
+    background-color: rgba(45, 45, 45, 0.1)
+
+/* propiedad height siver para darle un alto al elemento  */
+    height: 25px;
+  }
+  p {
+    text-align: justify;
+  }
+  .links {
+    margin-right: 20px;
+    text-align: left;
+  }
+  .fullCard {
+    width: 245px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 5px;
+    padding: 4px;
+  }
+  .cardContent {
+    padding: 10px;
+  }
+</style>
+<div class="fullCard">
+  <div class="cardContent">
+    <div class="cardText">
+      <h4><s>Google</s> Alphabet </h4>
+/*Para poner el texto en negrita, puede usar la etiqueta <strong></strong> Con la etiqueta strong, 
+el navegador aplica el CSS de font-weight: bold; al elemento. */
+      <p><em>Google was founded by Larry Page and Sergey Brin while they were <u>Ph.D. students</u> at <strong>Stanford University.</strong>
+      </em></p>
+/* Para subrayar el texto, puede usar la etiqueta u "<u>Ph.D.</u>" se usa a menudo para indicar que una sección de texto es importante */
+    </div>
+    <div class="cardLinks">
+      <a href="https://en.wikipedia.org/wiki/Larry_Page" target="_blank" class="links">Larry Page</a>
+      <a href="https://en.wikipedia.org/wiki/Sergey_Brin" target="_blank" class="links">Sergey Brin</a>
+    </div>
+  </div>
+</div> 
+-->
+
+<!-- Para enfatizar el texto, puede usar la etiqueta em -->
+<!-- Para tachar texto,puede usar la etiqueta s. Muestra que una sección de texto ya no es válida. Con la etiqueta s,
+el navegador aplica el CSS de text-decoration: line-through; al elemento. -->
+
+
+<!-- La propiedad box-shadow aplica una o más sombras a un elemento.
+La propiedad box-shadow toma los siguientes valores, en orden:
+offset-x (hasta dónde empujar la sombra horizontalmente desde el elemento)
+offset-y (hasta dónde empujar la sombra verticalmente desde el elemento)
+radio de desenfoque
+radio de extensión
+color
+Los valores de radio de desenfoque y radio de dispersión son opcionales.
+Se pueden crear varias sombras de cuadro usando comas para separar las propiedades de cada elemento de sombra de cuadro.
+Aquí hay un ejemplo del CSS para crear múltiples sombras con algo de desenfoque, en colores negros en su mayoría transparentes:
+box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); -->
+
+
+<!-- La propiedad de opacidad en CSS se usa para ajustar la opacidad, o por el contrario, la transparencia de un elemento.
+Un valor de 1 es opaco, que no es transparente en absoluto.
+Un valor de 0,5 es la mitad transparente.
+Un valor de 0 es completamente transparente. 
+.links{
+  opacity:0.7;
+} -->
+
+
+<!-- La propiedad de transformación de texto en CSS se usa para cambiar la apariencia del texto
+La siguiente tabla muestra cómo los diferentes valores de transformación de texto cambian el texto de ejemplo "Transformarme".
+Value	           Result
+lowercase	     "transform me"
+uppercase	     "TRANSFORM ME"
+capitalize	   "Transform Me"
+initial	        Use the default value
+inherit	        Use the text-transform value from the parent element
+none	          Default: Use the original text-->
+
+
+
+<!-- La propiedad de tamaño de fuente(font-size) se usa para especificar qué tan grande es el texto en un elemento dado. 
+Esta regla se puede usar para varios elementos para crear una coherencia visual del texto en una página.
+-->
+
+
+<!-- La propiedad font-weight establece qué tan gruesos o delgados son los caracteres en una sección de texto.
+Set the font-weight of the h1 tag to 800.
+Set the font-weight of the h2 tag to 600.
+Set the font-weight of the h3 tag to 500.
+-->
+
+
+<!-- CSS ofrece la propiedad line-height para cambiar la altura de cada línea en un bloque de texto. 
+Como sugiere el nombre, cambia la cantidad de espacio vertical que obtiene cada línea de texto
+p{
+  font-size: 16px;
+  line-height:25px;}
+-->
+
+
+
+<!-- Este desafío tocará el uso de pseudoclases. Una pseudoclase es una palabra clave que se puede 
+agregar a los selectores para seleccionar un estado específico del elemento.Por ejemplo, 
+el estilo de una etiqueta de anclaje se puede cambiar para su estado de desplazamiento 
+mediante el selector de pseudoclase :hover. Aquí está el CSS para cambiar el color de la etiqueta de 
+anclaje a rojo durante su estado de desplazamiento:
+a:hover{
+  color rojo;
+} -->
+
+
+<!-- CSS trata cada elemento HTML como su propio cuadro, que generalmente se conoce como el modelo de cuadro CSS.
+CSS ofrece la propiedad de posición para anularlo.Cuando la posición de un elemento se establece en relativa, 
+le permite especificar cómo CSS debe moverlo en relación con su posición actual en el flujo normal de la página. 
+Se empareja con las propiedades de desplazamiento de CSS de left or right, and top or bottom Estos indican cuántos píxeles,
+porcentajes o ems alejar el elemento de su posición normal. El siguiente ejemplo aleja el párrafo 10 píxeles de la parte inferior:
+p {
+  position: relative;
+  bottom: 10px;
+}
+Cambiar la posición de un elemento a relativo no lo elimina del flujo normal; otros elementos a su alrededor
+aún se comportan como si ese elemento estuviera en su posición predeterminada
+-->
+
+
+<!-- Los desplazamientos de CSS de (top or bottom and left or right) le indican al navegador c
+uánto debe desplazar un elemento en relación con el lugar en el que se ubicaría en el flujo normal del documento. 
+Está desplazando un elemento lejos de un punto determinado, lo que aleja el elemento del lado al que se hace referencia 
+(efectivamente, en la dirección opuesta). Como viste en el último desafío, usar el desplazamiento superior movió el h2 hacia abajo.
+Del mismo modo, el uso de un desplazamiento a la izquierda mueve un elemento a la derecha. 
+h2 {
+    position: relative;
+    bottom: 10px;
+    left:15px;
+  }
+-->
+
+
+<!-- La siguiente opción para la propiedad de posición de CSS es absoluta, que bloquea el elemento en 
+su lugar en relación con su contenedor principal. Las propiedades de desplazamiento de CSS
+(top or bottom and left or right) se utilizan para ajustar la posición.
+  #searchbar {
+    position:absolute;
+    top:50px;
+    right:50px;
+  }
+-->
+
+<!-- esquema de diseño que ofrece CSS es la posición fija, que es un tipo de posicionamiento 
+absoluto que bloquea un elemento relativo a la ventana del navegador. se usa con las propiedades 
+de compensación de CSS y también elimina el elemento del flujo normal del documento. 
+Otros elementos ya no "se dan cuenta" de dónde están colocados, lo que puede requerir algunos 
+ajustes de diseño en otros lugares.
+Una diferencia clave entre las posiciones fija y absoluta es que un elemento con una 
+posición fija no se moverá cuando el usuario se desplace.
+#navbar {
+    position:fixed;
+    top:0px;
+    left:0px
+    width: 100%;
+    background-color: #767676;
+  } -->
+
+
+<!-- La siguiente herramienta establece la propiedad float de un elemento. Los elementos float
+se eliminan del flujo normal de un documento y se empujan a la izquierda o a la derecha de su elemento padre contenedor. 
+Se usa comúnmente con el accesorio de width.
+<head>
+  <style>
+    #left {
+      float:left;
+      width: 50%;
+    }
+    #right {
+      float:right;
+      width: 40%;
+    }
+    aside, section {
+      padding: 2px;
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome!</h1>
+  </header>
+  <section id="left">
+    <h2>Content</h2>
+    <p>Good stuff</p>
+  </section>
+  <aside id="right">
+    <h2>Sidebar</h2>
+    <p>Links</p>
+  </aside>
+</body>
+-->
+
+<!-- Cambiar la posición de los elementos superpuestos con la propiedad z-index Cuando los elementos 
+se colocan para superponerse (es decir, usando la position: absolute | relative | fixed | sticky), 
+el elemento que viene más adelante en el marcado HTML aparecerá, de forma predeterminada, en la parte superior de los otros elementos.
+Sin embargo, la propiedad del z-index puede especificar el orden en que se apilan los elementos unos encima de otros
+Debe ser un número entero y los valores más altos para la propiedad de z-index de un elemento 
+lo mueven más alto en la pila que aquellos con valores más bajos. 
+<style>
+  div {
+    width: 60%;
+    height: 200px;
+    margin-top: 20px;
+  }
+
+  .first {
+    background-color: red;
+    position: absolute;
+    z-index:2
+
+  }
+  .second {
+    background-color: blue;
+    position: absolute;
+    left: 40px;
+    top: 50px;
+    z-index: 1;
+  }
+</style>
+<div class="first"></div>
+<div class="second"></div> -->
+
+
+<!-- Centre un elemento horizontalmente usando la propiedad margin Otra técnica de posicionamiento 
+es centrar un elemento de bloque horizontalmente.Una forma de hacer esto es establecer su margin en un valor de auto.
+Este método también funciona para las imágenes. pero se pueden cambiar para bloquear elementos cuando establece 
+la propiedad de display  en block.
+<style>
+  div {
+    background-color: blue;
+    height: 100px;
+    width: 100px;
+    margin:auto;
+  }
+</style>
+<div></div>-->
+
+<!-- Más información sobre los colores complementarios La teoría del color y su impacto en el diseño
+La rueda de colores es una herramienta útil para visualizar cómo se relacionan los colores entre sí:
+es un círculo donde los tonos similares son vecinos y los diferentes tonos están más separados. 
+Cuando dos colores están opuestos en la rueda, se les llama colores complementarios.
+Tienen la característica de que si se combinan, se "anulan" entre sí y crean un color gris. 
+Sin embargo, cuando se colocan uno al lado del otro, estos colores parecen más vibrantes y producen un fuerte contraste visual.
+Algunos ejemplos de colores complementarios con sus códigos hexadecimales son:
+red (#FF0000) and cyan (#00FFFF)
+green (#00FF00) and magenta (#FF00FF)
+blue (#0000FF) and yellow (#FFFF00)
+<style>
+  body {
+    background-color: #FFFFFF;
+  }
+  .blue {
+    background-color: blue ;
+  }
+  .yellow {
+    background-color: yellow;
+  }
+  div {
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+  }
+</style>
+<div class="blue"></div>
+<div class="yellow"></div> -->
+
+<!-- Más información sobre los colores terciarios, El rojo (R), el verde (G) y el azul (B) se denominan colores primarios.
+La mezcla de dos colores primarios crea los colores secundarios cian (G + B), magenta (R + B) y amarillo (R + G)
+Por ejemplo, el magenta se compone de rojo y azul y es el complemento del verde.
+Los colores terciarios son el resultado de combinar un color primario con uno de sus vecinos de color secundario. 
+Por ejemplo, dentro del modelo de color RGB, el rojo (primario) y el amarillo (secundario) forman el naranja (terciario)
+Existen varios métodos para seleccionar diferentes colores que dan como resultado una combinación armoniosa en el diseño.
+puede usar colores terciarios se denomina esquema de color complementario dividido. Este esquema comienza con un color base, 
+luego lo combina con los dos colores adyacentes a su complemento Aquí hay tres colores creados usando el esquema de complemento dividido:
+
+Color	      Hex Code
+orange      #FF7F00
+cyan	      #00FFFF
+raspberry	  #FF007F
+
+
+Cambie la propiedad de color de fondo de las clases orange, cyan y raspberry a sus respectivos colores. 
+Asegúrese de utilizar los códigos hexadecimales y no los nombres de los colores.
+<style>
+  body {
+    background-color: #FFFFFF;
+  }
+
+  .orange {
+    background-color: #FF7F00;
+  }
+
+  .cyan {
+    background-color: #00FFFF;
+  }
+
+  .raspberry {
+    background-color: #FF007F;
+  }
+
+  div {
+    height: 100px;
+    width: 100px;
+    margin-bottom: 5px;
+  }
+</style>
+
+<div class="orange"></div>
+<div class="cyan"></div>
+<div class="raspberry"></div>
+-->
+
+<!-- Ajustar el color de varios elementos a colores complementarios, 
+los colores opuestos en la rueda de colores pueden hacer que los demás parezcan más vibrantes 
+cuando se colocan uno al lado del otro. Sin embargo, el fuerte contraste visual puede ser discordante 
+si se usa demasiado en un sitio web y, a veces,puede hacer que el texto sea más difícil de leer si se coloca 
+sobre un fondo de color complementario En la práctica, uno de los colores suele ser dominante y el complemento se utiliza para llamar 
+la atención visual sobre cierto contenido de la página.
+
+Esta página utilizará un tono verde azulado (#09A7A1) como color dominante y 
+su complemento naranja (#FF790E) para resaltar visualmente los botones de registro. 
+Cambie el color de fondo tanto del encabezado como del pie de página de negro a verde azulado. 
+Luego cambie el color del texto h2 a verde azulado también. Finalmente, cambie el color de fondo del botón al color naranja.
+<style>
+  body {
+    background-color: white;
+  }
+  header {
+    background-color: #09A7A1;
+    color: white;
+    padding: 0.25em;
+  }
+  h2 {
+    color: #09A7A1;
+  }
+  button {
+    background-color: #FF790E;
+  }
+  footer {
+    background-color: #09A7A1;
+    color: white;
+    padding: 0.5em;
+  }
+</style>
+<header>
+  <h1>Cooking with FCC!</h1>
+</header>
+<main>
+  <article>
+    <h2>Machine Learning in the Kitchen</h2>
+    <p>Join this two day workshop that walks through how to implement cutting-edge snack-getting algorithms with a command line interface. Coding usually involves writing exact instructions, but sometimes you need your computer to execute flexible commands, like <code>fetch Pringles</code>.</p>
+    <button>Sign Up</button>
+  </article>
+  <article>
+    <h2>Bisection Vegetable Chopping</h2>
+    <p>This week-long retreat will level-up your coding ninja skills to actual ninja skills. No longer is the humble bisection search limited to sorted arrays or coding interview questions, applying its concepts in the kitchen will have you chopping carrots in O(log n) time before you know it.</p>
+    <button>Sign Up</button>
+  </article>
+</main>
+<br>
+<footer>&copy; 2018 FCC Kitchen</footer>
+-->
+
+<!--Ajustar el matiz de un color
+Los colores tienen varias características, como el matiz, la saturación y la luminosidad (hue, saturation, and lightness).
+CSS3 introdujo la función hsl() como una forma alternativa de elegir un color indicando directamente estas características.
+
+tono (hue) es lo que la gente suele considerar como "color". En hsl(), hue usa un concepto de rueda de colores en lugar del espectro, 
+donde el ángulo del color en el círculo se da como un valor entre 0 y 360.
+
+La saturacion (Saturation) es la cantidad de gris en un color. Un color completamente saturado no tiene gris, 
+y un color mínimamente saturado es casi completamente gris. Esto se da como un porcentaje con 100% de saturación total.
+
+La luminosidad (Lightness ) es la cantidad de blanco o negro en un color. Se da un porcentaje que va del 0% (negro) al 100% (blanco), 
+donde el 50% es el color normal.
+
+Aquí hay algunos ejemplos del uso de hsl() con colores de luminosidad normal (normal lightness), totalmente saturados (fully-saturated):
+Color	       HSL
+red	        hsl(0, 100%, 50%)
+yellow	    hsl(60, 100%, 50%)
+green       hsl(120, 100%, 50%)
+cyan	      hsl(180, 100%, 50%)
+blue	      hsl(240, 100%, 50%)
+magenta   	hsl(300, 100%, 50%)
+
+Cambie el background-color de cada elemento div según los nombres de clase (green, cyan, or blue) usando hsl(). 
+Los tres deben tener saturación (full saturation) completa y luminosidad normal (normal lightness.).
+
+<style>
+  body {
+    background-color: #FFFFFF;
+  }
+
+  .green {
+    background-color: hsl(120, 100%, 50%);
+  }
+
+  .cyan {
+    background-color: hsl(180, 100%, 50%);
+  }
+
+  .blue {
+    background-color: hsl(240, 100%, 50%);
+  }
+
+  div {
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+  }
+</style>
+
+<div class="green"></div>
+<div class="cyan"></div>
+<div class="blue"></div>
+-->
+
+
+<!-- Ajustar el tono de un color
+La opción hsl() en CSS también facilita el ajuste del tono de un color.
+Mezclar blanco con un tono puro crea un matiz de ese color, y agregar negro creará una sombra. 
+Alternativamente, se produce un tono agregando gris o matizando y sombreando.
+Recuerde que la 's' y la 'l' de hsl() representan saturación y luminosidad, respectivamente.
+El porcentaje de saturación cambia la cantidad de gris y el porcentaje de luminosidad determina cuánto blanco o negro hay en el color.
+Esto es útil cuando tiene un tono base que le gusta, pero necesita diferentes variaciones del mismo.  
+<style>
+  header {
+    background-color: hsl(180, 90%, 35%);
+    color: #FFFFFF;
+  }
+
+  nav {
+    background-color:hsl(180, 80%, 25%);
+  }
+
+  h1 {
+    text-indent: 10px;
+    padding-top: 10px;
+  }
+
+  nav ul {
+    margin: 0px;
+    padding: 5px 0px 5px 30px;
+  }
+
+  nav li {
+    display: inline;
+    margin-right: 20px;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+</style>
+
+<header>
+  <h1>Cooking with FCC!</h1>
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Classes</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+-->
+
+
+<!-- Crear un degradado lineal CSS gradual.
+CSS brinda la capacidad de usar transiciones de color, también conocidas como degradados, en los elementos. 
+Se accede a esto a través de la función linear-gradient() de la propiedad de fondo. Aquí está la sintaxis general:
+
+background: linear-gradient(gradient_direction, color 1, color 2, color 3, ...);
+
+El primer argumento especifica la dirección desde la que comienza la transición de color: se puede establecer como un grado, 
+donde 90 grados hacen un degradado horizontal (de izquierda a derecha) y 45 grados hacen un degradado diagonal 
+(de abajo a la izquierda a arriba a la derecha). Los siguientes argumentos especifican el orden de los colores utilizados en el degradado. 
+
+Example:
+background: linear-gradient(90deg, red, yellow, rgb(204, 204, 255));
+
+<style>
+  div {
+    border-radius: 20px;
+    width: 70%;
+    height: 400px;
+    margin: 50px auto;
+    background: linear-gradient(35deg, #CCFFFF, #FFCCCC);
+  }
+</style>
+<div></div>
+-->
+
+<!-- Use un degradado lineal CSS para crear un elemento rayado
+La función repeating-linear-gradient() es muy similar a linear-gradient() con la gran diferencia de que repite
+el patrón de degradado especificado. repeating-linear-gradient() acepta una variedad de valores, pero para simplificar, 
+trabajará con un valor de ángulo y valores de parada de color en este desafío.
+El valor del ángulo es la dirección del degradado. Las paradas de color son como valores de ancho que marcan dónde 
+tiene lugar una transición y se dan con un porcentaje o un número de píxeles.
+
+En el ejemplo que se muestra en el editor de código, el degradado comienza con el color amarillo a 0 píxeles que 
+se mezcla con el segundo color azul a 40 píxeles del inicio. Dado que la siguiente parada de color también está en 40 píxeles, 
+el degradado cambia inmediatamente al tercer color verde, que a su vez se mezcla con el valor del cuarto color rojo,
+ya que está a 80 píxeles del comienzo del degradado.
+
+Para este ejemplo, ayuda pensar en las paradas de color como pares donde cada dos colores se mezclan.
+Si cada dos valores de parada de color son del mismo color, la mezcla no se nota porque está entre el mismo color, 
+seguida de una transición difícil al siguiente color, por lo que termina con rayas.
+
+
+El ángulo del gradiente lineal repetido () debe ser de 45 grados.
+El ángulo del gradiente lineal repetido () ya no debería ser de 90 grados
+La parada de color en 0 píxeles debe ser amarilla.
+La primera parada de color a los 40 píxeles debe ser amarilla.
+La segunda parada de color en 40 píxeles debe ser negra.
+La última parada de color en 80 píxeles debe ser negra.
+<style>
+  div{
+    border-radius: 20px;
+    width: 70%;
+    height: 400px;
+    margin:  50 auto;
+    background: repeating-linear-gradient(
+      45deg,
+      yellow 0px,
+      yellow 40px,
+      black 40px,
+      black 80px
+    );
+  }
+</style>
+<div></div>
+-->
+
+
+<!-- Cree textura agregando un patrón sutil como imagen de background
+Una forma de agregar textura e interés a un background y hacer que se destaque más es agregar un patrón sutil. 
+La clave es el equilibrio, ya que no desea que el fondo se destaque demasiado y le quite el primer plano. 
+La propiedad de background admite la función url() para vincular a una imagen de la textura o patrón elegido. 
+La dirección del enlace está entre comillas dentro de los paréntesis.
+Usando la URL de https://cdn-media-1.freecodecamp.org/imgr/MJAkxbh.png, configure el background de toda la página con el selector de body.
+<style>
+  body {
+    background:url("https://cdn-media-1.freecodecamp.org/imgr/MJAkxbh.png")
+  }
+</style>
+-->
+
+<!-- Use la propiedad de escala(scale) de transformación CSS para cambiar el tamaño de un elemento
+Para cambiar la escala de un elemento, CSS tiene la propiedad transform, junto con su función scale().
+El siguiente ejemplo de código duplica el tamaño de todos los elementos de párrafo en la página:
+p{
+  transformar: escala(2);
+}
+
+<style>
+  .ball {
+    width: 100px;
+    height: 100px;
+    margin: 50 auto;
+    position: fixed;
+    background: linear-gradient(
+      35deg,
+      #ccffff,
+      #ffcccc
+    );
+    border-radius: 50%;
+  }
+  #ball1 {
+    left: 20%;
+  }
+  #ball2 {
+    left: 65%;
+    transform: scale(1.5);
+  }
+</style>
+<div class="ball" id= "ball1"></div>
+<div class="ball" id= "ball2"></div>
+-->
+
+
+<!-- Use la propiedad de scale de transformación CSS para escalar un elemento al pasar el mouse
+La propiedad de transformación tiene una variedad de funciones que le permiten escalar, mover, rotar, sesgar, etc., sus elementos
+Cuando se usa con pseudoclases como :hover que especifica un cierto estado de un elemento, 
+la propiedad de transformación puede agregar fácilmente interactividad a sus elementos.
+Aquí hay un ejemplo para escalar los elementos del párrafo a 2.1 veces su tamaño original cuando un usuario pasa el mouse sobre ellos:
+p:hover {
+  transform: scale(2.1);
+}
+
+<style>
+  div{
+    width: 70%;
+    height: 100px;
+    margin:  50px auto;
+    background: linear-gradient(
+      53deg,
+      #ccfffc,
+      #ffcccf
+    );
+    
+  }
+  div:hover{
+    transform:scale(1.1);
+  }
+</style>
+<div></div>
+-->
+
+
+<!-- Use la propiedad de transformación CSS skewX para sesgar un elemento a lo largo del eje X
+La siguiente función de la propiedad de transformación es skewX(), 
+que sesga(ó divide) el elemento seleccionado a lo largo de su eje X (horizontal) en un grado determinado
+El siguiente código sesga el elemento de párrafo en -32 grados a lo largo del eje X.
+p {
+  transform: skewX(-32deg);
+}
+
+Sesgue el elemento con la identificación de la parte inferior en 24 grados a lo largo del eje X usando la propiedad de transformación.
+<style>
+  div {
+    width: 70%;
+    height: 100px;
+    margin:  50px auto;
+  }
+  #top {
+    background-color: red;
+  }
+  #bottom {
+    background-color: blue;
+    transform:skewX(24deg);
+  }
+</style>
+<div id="top"></div>
+<div id="bottom"></div>
+-->
+
+
+<!-- Use la propiedad de transformación CSS skewY para sesgar un elemento a lo largo del eje Y
+Dado que la función skewX() sesga el elemento seleccionado a lo largo del eje X en un grado determinado, 
+no sorprende que la propiedad skewY() sesgue un elemento a lo largo del eje Y (vertical).
+
+Skew the element with the id of top -10 degrees along the Y-axis by using the transform property.
+<style>
+  div {
+    width: 70%;
+    height: 100px;
+    margin: 50px auto;
+  }
+  #top {
+    background-color: red;
+    transform:skewY(-10deg);
+  }
+  #bottom {
+    background-color: blue;
+    transform: skewX(24deg);
+  }
+</style>
+<div id="top"></div>
+<div id="bottom"></div>
+-->
+
+
+<!-- Crear un gráfico usando CSS 
+Al manipular diferentes selectores y propiedades, puede crear formas interesantes. 
+Uno de los más fáciles de probar es una forma de luna creciente. Para este desafío, 
+debe trabajar con la propiedad box-shadow que establece la sombra de un elemento, 
+junto con la propiedad border-radius que controla la redondez de las esquinas del elemento.
+Creará un objeto redondo y transparente con una sombra nítida ligeramente desplazada hacia un lado; 
+la sombra en realidad será la forma de la luna que ve.
+Para crear un objeto redondo, la propiedad border-radius debe establecerse en un valor del 50%
+Puede recordar de un desafío anterior que la propiedad box-shadow toma valores para offset-x, offset-y, 
+blur-radius, spread-radius y un valor de color en ese orden. Los valores de radio de desenfoque y radio de dispersión son opcionales..
+
+Manipula el elemento cuadrado en el editor para crear la forma de la luna. Primero, 
+cambie el color de fondo a transparente, luego configure la propiedad border-radius al 50% para hacer la forma circular. 
+Finalmente, cambie la propiedad box-shadow para establecer offset-x en 25 px, offset-y en 10 px, blur-radius en 0, 
+spread-radius en 0 y color en azul.
+
+<style>
+  .center {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 25px 10px 0px 0px blue;
+  }
+</style>
+<div class="center"></div>
+-->
+
+
+<!-- Crea una forma más compleja usando CSS y HTML
+Una de las formas más populares del mundo es la forma de corazón, y en este desafío crearás una usando CSS puro. 
+Pero primero, debe comprender los pseudoelementos ::before y ::after. 
+::before crea un pseudo-elemento que es el primer hijo del elemento seleccionado; 
+::after crea un pseudo-elemento que es el último hijo del elemento seleccionado. 
+En el siguiente ejemplo, se usa un pseudoelemento ::before para agregar un rectángulo a un elemento con el corazón de la clase:
+.heart::before {
+  content: "";
+  background-color: yellow;
+  border-radius: 25%;
+  position: absolute;
+  height: 50px;
+  width: 70px;
+  top: -50px;
+  left: 5px;
+}
+Para que los pseudoelementos ::before y ::after funcionen correctamente, deben tener una propiedad de contenido definida. 
+Esta propiedad generalmente se usa para agregar cosas como una foto o texto al elemento seleccionado. 
+Cuando los pseudoelementos ::before y ::after se utilizan para crear formas, la propiedad de contenido sigue siendo necesaria,
+pero se establece en una cadena vacía. En el ejemplo anterior, el elemento con la clase de corazón tiene un pseudoelemento 
+::before que produce un rectángulo amarillo con una altura y un ancho de 50px y 70px, respectivamente.
+Este rectángulo tiene esquinas redondeadas debido a su radio de borde del 25% y está posicionado absolutamente
+
+1- Transforma el elemento de la pantalla en un corazón. En el selector .heart::after, cambie el color de fondo a rosa y 
+el radio del borde al 50%.
+2- A continuación, apunte al elemento con el corazón de clase (solo corazón) y complete la propiedad de transformación. 
+Utilice la función de rotación () con -45 grados.
+3- Finalmente, en el selector .heart::before, establezca su propiedad de contenido en una cadena vacía.
+
+<style>
+  .heart {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: pink;
+    height: 50px;
+    width: 50px;
+    transform: rotate(-45deg);
+  }
+  .heart::after {
+    background-color: pink;
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 0px;
+    left: 25px;
+  }
+  .heart::before {
+    content: "";
+    background-color: pink;
+    border-radius: 50%;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: -25px;
+    left: 0px;
+  }
+</style>
+<div class="heart"></div>
+-->
+
+
+<!-- Aprenda cómo funcionan las propiedades de animación y @keyframes de CSS
+Para animar un elemento, debe conocer las propiedades de animación y la regla @keyframes. 
+Las propiedades de la animación controlan cómo debe comportarse la animación y la regla @keyframes 
+controla lo que sucede durante esa animación. Hay ocho propiedades de animación en total. 
+Este desafío lo mantendrá simple y cubrirá los dos más importantes primero:
+1- animation-name establece el nombre de la animación, que luego @keyframes usa para decirle a CSS qué reglas van con qué animaciones.
+2- animation-duration establece la duración de la animación.
+
+@keyframes es cómo especificar exactamente lo que sucede dentro de la animación durante la duración. 
+Esto se hace otorgando propiedades CSS para "fotogramas" específicos durante la animación, 
+con porcentajes que van del 0% al 100%. Si compara esto con una película, las propiedades CSS para 0% 
+es cómo se muestra el elemento en la escena de apertura. Las propiedades de CSS para el 100% es cómo aparece el elemento al final, 
+justo antes de que aparezcan los créditos. Luego, CSS aplica la magia para hacer la transición del elemento durante la duración 
+dada para representar la escena. Aquí hay un ejemplo para ilustrar el uso de @keyframes y las propiedades de animación:
+#anim {
+  animation-name: colorful;
+  animation-duration: 3s;
+}
+
+@keyframes colorful {
+  0% {
+    background-color: blue;
+  }
+  100% {
+    background-color: yellow;
+  }
+}
+Para el elemento con la identificación anim, el fragmento de código anterior establece el nombre de la animación en colorido y 
+establece la duración de la animación en 3 segundos. Luego, la regla @keyframes se vincula a las propiedades de animación con 
+el nombre colorido. Establece el color en azul al comienzo de la animación (0 %), que cambiará a amarillo al final de la animación 
+(100 %). No está limitado solo a transiciones de principio a fin, puede establecer propiedades para el elemento para cualquier 
+porcentaje entre 0% y 100%.
+
+
+Cree una animación para el elemento con el id rect, configurando el nombre de la animación en arco iris y 
+la duración de la animación en 4 segundos. A continuación, declare una regla @keyframes y establezca el color de 
+fondo al comienzo de la animación (0 %) en azul, en el medio de la animación (50 %) en verde y al final de la animación (100 %) 
+en amarillo.
+
+<style>
+  div {
+    height: 40px;
+    width: 70%;
+    background: black;
+    margin: 50px auto;
+    border-radius: 5px;
+  }
+
+  #rect {
+    animation-name:rainbow;
+    animation-duration:4s;
+  }
+
+  @keyframes rainbow{
+    0%{
+      background-color: blue;
+    }
+    50%{
+      background-color:green;
+    }
+    100%{
+      background-color:yellow;
+    }
+  }
+</style>
+<div id="rect"></div>
+-->
+
+
+<!-- Use la animación CSS para cambiar el estado de desplazamiento(Hover) de un botón
+
+Puede usar CSS @keyframes para cambiar el color de un botón en su estado de desplazamiento.
+Aquí hay un ejemplo de cómo cambiar el ancho de una imagen al pasar(hover) el mouse:
+<style>
+  img {
+    width: 30px;
+  }
+  img:hover {
+    animation-name: width;
+    animation-duration: 500ms;
+  }
+
+  @keyframes width {
+    100% {
+      width: 40px;
+    }
+  }
+</style>
+<img src="https://cdn.freecodecamp.org/curriculum/applied-visual-design/google-logo.png" alt="Google's Logo" />
+
+Tenga en cuenta que ms significa milisegundos, donde 1000 ms es igual a 1 s.
+
+Use CSS @keyframes para cambiar el color de fondo del elemento del botón para que se convierta en #4791d0 
+cuando un usuario pasa el mouse sobre él. La regla @keyframes solo debe tener una entrada para el 100 %.
+
+<style>
+  button {
+    border-radius: 5px;
+    color: white;
+    background-color: #0F5897;
+    padding: 5px 10px 8px 10px;
+  }
+  button:hover {
+    animation-name: background-color;
+    animation-duration: 500ms;
+  }
+@keyframes background-color{
+  100%{
+    background-color:#4791d0;
+  }
+}
+</style>
+<button>Register</button>
+-->
+
+
+<!-- Modificar el modo de relleno de una animación(animation-fill-mode)
+Eso es genial, pero no funciona bien todavía. Observe cómo la animación se restablece después de que hayan pasado 500 ms, 
+lo que hace que el botón vuelva al color original. Desea que el botón permanezca resaltado.
+
+Esto se puede hacer configurando la propiedad animation-fill-mode en forwards. El modo de relleno de animación 
+especifica el estilo aplicado a un elemento cuando finaliza la animación. Puedes configurarlo así:
+animation-fill-mode: forwards;
+
+<style>
+  button {
+    border-radius: 5px;
+    color: white;
+    background-color: #0F5897;
+    padding: 5px 10px 8px 10px;
+  }
+  button:hover {
+    animation-name: background-color;
+    animation-duration: 500ms;
+    /* Only change code below this line */
+    animation-fill-mode: forwards;
+    /* Only change code above this line */
+  }
+  @keyframes background-color {
+    100% {
+      background-color: #4791d0;
+    }
+  }
+</style>
+<button>Register</button>
+-->
+
+
+<!--Crear movimiento usando animación CSS
+Cuando los elementos tienen una posición(position) específica, como fija(fixed) o relativa(relative), 
+las propiedades de desplazamiento de CSS right,left, top, y bottom se pueden usar en las reglas de animación para crear movimiento.
+
+Como se muestra en el siguiente ejemplo, puede empujar el elemento hacia abajo y luego hacia arriba configurando 
+la propiedad superior(top) del fotograma clave del 50 % en 50 px, pero con 0 px para el primer (0 %) y el último (100%) fotograma clave.
+@keyframes rainbow {
+  0% {
+    background-color: blue;
+    top: 0px;
+  }
+  50% {
+    background-color: green;
+    top: 50px;
+  }
+  100% {
+    background-color: yellow;
+    top: 0px;
+  }
+}
+
+Agregue un movimiento horizontal a la animación div. Usando la propiedad de desplazamiento izquierdo, 
+agregue a la regla @keyframes para que el arcoíris comience en 0 píxeles al 0 %, se mueva a 25 píxeles al 50 % y 
+termine en -25 píxeles al 100 %. No reemplace la propiedad superior en el editor: la animación debe tener movimiento 
+tanto vertical como horizontal.
+<style>
+  div {
+    height: 40px;
+    width: 70%;
+    background: black;
+    margin: 50px auto;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  #rect {
+    animation-name: rainbow;
+    animation-duration: 4s;
+  }
+
+  @keyframes rainbow {
+    0% {
+      background-color: blue;
+      left: 0px;
+    }
+    50% {
+      background-color: green;
+      left: 25px;
+    }
+    100% {
+      background-color: yellow;
+      left: -25px;
+    }
+  }
+</style>
+<div id="rect"></div>
+
+-->
+
+
+<!-- Cree una dirección visual desvaneciendo un elemento de izquierda a derecha
+
+Para este desafío, cambiará la opacidad(opacity) de un elemento animado para que se desvanezca gradualmente 
+a medida que llega al lado derecho de la pantalla.
+
+En la animación que se muestra, el elemento redondo con el fondo degradado se mueve a la derecha por la marca del 
+50 % de la animación según la regla @keyframes. 
+
+Apunte al elemento con la identificación de la pelota y agregue la propiedad de opacidad establecida en 0.1 
+al 50%, para que el elemento se desvanezca a medida que se mueve hacia la derecha.
+
+<style>
+  #ball {
+    width: 70px;
+    height: 70px;
+    margin: 50px auto;
+    position: fixed;
+    left: 20%;
+    border-radius: 50%;
+    background: linear-gradient(
+      35deg,
+      #ccffff,
+      #ffcccc
+    );
+    animation-name: fade;
+    animation-duration: 3s;
+  }
+  @keyframes fade {
+    50% {
+      left: 60%;
+      opacity:0.1;
+    }
+  }
+</style>
+<div id="ball"></div>
+-->
+
+
+<!-- Animate Elements Continually Using an Infinite Animation Count
+Los desafíos anteriores cubrieron cómo usar algunas de las propiedades de animación y la regla @keyframes.
+Otra propiedad de la animación es el animation-iteration-count(conteo de iteraciones de animación), que le permite controlar cuántas 
+veces desea recorrer la animación. Aquí hay un ejemplo:
+animation-iteration-count: 3;
+En este caso, la animación se detendrá después de ejecutarse 3 veces, pero es posible hacer que la 
+animación se ejecute continuamente configurando ese valor en infinito(infinite).
+
+<style>
+  #ball {
+    width: 100px;
+    height: 100px;
+    margin: 50px auto;
+    position: relative;
+    border-radius: 50%;
+    background: linear-gradient(
+      35deg,
+      #ccffff,
+      #ffcccc
+    );
+    animation-name: bounce;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+  @keyframes bounce{
+    0% {
+      top: 0px;
+    }
+    50% {
+      top: 249px;
+      width: 130px;
+      height: 70px;
+    }
+    100% {
+      top: 0px;
+    }
+  }
+</style>
+<div id="ball"></div>
+-->
+
+<!-- recuento de iteraciones de animación
+Aquí hay otro ejemplo de animación continua con la propiedad animation-iteration-count que usa 
+el corazón que diseñó en un desafío anterior.
+
+La animación de latidos del corazón de un segundo de duración consta de dos piezas animadas. 
+Los elementos del corazón (incluidas las piezas :before  y :after) se animan para cambiar de tamaño mediante 
+la propiedad de (transform)transformación, y el div de fondo(background) se anima para cambiar su color mediante 
+la propiedad de fondo(background).
+
+Mantenga el corazón latiendo agregando la propiedad animation-iteration-count tanto para la clase back como 
+para la clase heart y estableciendo el valor en infinito. Los selectores heart:before y heart:after 
+no necesitan ninguna propiedad de animación.
+<style>
+  .back {
+    position: fixed;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    animation-name: backdiv;
+    animation-duration: 1s;
+    animation-iteration-count:infinite;
+  }
+  .heart {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: pink;
+    height: 50px;
+    width: 50px;
+    transform: rotate(-45deg);
+    animation-name: beat;
+    animation-duration: 1s;
+    animation-iteration-count:infinite;
+  }
+  .heart:after {
+    background-color: pink;
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 0px;
+    left: 25px;
+  }
+  .heart:before {
+    background-color: pink;
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: -25px;
+    left: 0px;
+  }
+  @keyframes backdiv {
+    50% {
+      background: #ffe6f2;
+    }
+  }
+  @keyframes beat {
+    0% {
+      transform: scale(1) rotate(-45deg);
+    }
+    50% {
+      transform: scale(0.6) rotate(-45deg);
+    }
+  }
+</style>
+<div class="back"></div>
+<div class="heart"></div>-->
+
+
+<!-- Animar elementos a tasas variables
+Hay una variedad de formas de alterar las tasas de animación de elementos animados de manera similar. 
+Hasta ahora, esto se ha logrado aplicando una propiedad de conteo de iteraciones de animación y estableciendo reglas de @keyframes.
+
+Para ilustrar, la animación de la derecha consta de dos estrellas que disminuyen en tamaño y 
+opacidad en la marca del 20% en la regla @keyframes, lo que crea la animación centelleante. 
+Puede cambiar la regla @keyframes para uno de los elementos para que las estrellas parpadeen a diferentes velocidades.
+Modifique la tasa de animación para el elemento con el nombre de clase de estrella-1 cambiando su regla @keyframes al 50%.
+
+<style>
+  .stars {
+    background-color: white;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    animation-iteration-count: infinite;
+  }
+  .star-1 {
+    margin-top: 15%;
+    margin-left: 60%;
+    animation-name: twinkle-1;
+    animation-duration: 1s;
+  }
+  .star-2 {
+    margin-top: 25%;
+    margin-left: 25%;
+    animation-name: twinkle-2;
+    animation-duration: 1s;
+  }
+  @keyframes twinkle-1 {
+    50% {
+      transform: scale(0.5);
+      opacity: 0.5;
+    }
+  }
+  @keyframes twinkle-2 {
+    20% {
+      transform: scale(0.5);
+      opacity: 0.5;
+    }
+  }
+  #back {
+    position: fixed;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(black, #000099, #66c2ff, #ffcccc, #ffeee6);
+  }
+</style>
+<div id="back"></div>
+<div class="star-1 stars"></div>
+<div class="star-2 stars"></div>-->
+
+
+<!-- Animar múltiples elementos a tasas variables
+En el desafío anterior, cambió las tasas de animación de dos elementos animados de manera similar al alterar sus reglas de @keyframes. 
+Puede lograr el mismo objetivo manipulando el animation-duration(duración de la animación) de varios elementos.
+
+En la animación que se ejecuta en el editor de código, hay tres estrellas en el cielo que parpadean al mismo ritmo en un bucle continuo. 
+Para que brillen a diferentes velocidades, puede establecer la propiedad de animation-duration(duración de la animación) en diferentes valores para cada elemento.
+
+Establezca la duración de la animación de los elementos con las clases star-1, star-2 y star-3 en 1 s, 0,9 s y 1,1 s, 
+respectivamente.
+
+<style>
+  .stars {
+    background-color: white;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    animation-iteration-count: infinite;
+  }
+  .star-1 {
+    margin-top: 15%;
+    margin-left: 60%;
+    animation-duration: 1s;
+    animation-name: twinkle;
+  }
+  .star-2 {
+    margin-top: 25%;
+    margin-left: 25%;
+    animation-duration: 0.9s;
+    animation-name: twinkle;
+  }
+  .star-3 {
+    margin-top: 10%;
+    margin-left: 50%;
+    animation-duration: 1.1s;
+    animation-name: twinkle;
+  }
+  @keyframes twinkle {
+    20% {
+      transform: scale(0.5);
+      opacity: 0.5;
+    }
+  }
+  #back {
+    position: fixed;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(black, #000099, #66c2ff, #ffcccc, #ffeee6);
+  }
+</style>
+<div id="back"></div>
+<div class="star-1 stars"></div>
+<div class="star-2 stars"></div>
+<div class="star-3 stars"></div>
+-->
+
+
+<!-- Cambiar el tiempo de animación con palabras clave 
+En las animaciones CSS, la propiedad animation-timing-function controla la rapidez con la que cambia un elemento animado 
+durante la duración de la animación. Si la animación es un automóvil que se mueve del punto A al punto B en un tiempo determinado 
+(la animation-duration(duración de su animación)), la animation-timing-function(función de tiempo de animación)
+indica cómo acelera y desacelera a lo largo del recorrido.
+
+Hay una serie de palabras clave predefinidas disponibles para opciones populares. Por ejemplo, 
+el valor predeterminado es (ease)facilidad, que comienza despacio, se acelera en el medio y luego vuelve a ralentizarse al final. 
+Otras opciones incluyen (ease-out)salida lenta, que es rápida al principio y luego se ralentiza, (ease-in)entrada lenta, que es 
+lenta al principio y luego se acelera al final, o (linear)lineal, que aplica una velocidad de animación constante en todo momento.
+
+Para los elementos con id de ball1   y ball2, agregue una propiedad de (animation-timing-function)función de tiempo de animación a cada uno 
+y establezca #bola1 en (linear)lineal y #ball2 en (ease-out)salida gradual. Observe la diferencia entre cómo se mueven los elementos 
+durante la animación pero terminan juntos, ya que comparten la misma (animation-duration)duración de animación de 2 segundos.
+
+<style>
+  .balls {
+    border-radius: 50%;
+    background: linear-gradient(
+      35deg,
+      #ccffff,
+      #ffcccc
+    );
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    margin-top: 50px;
+    animation-name: bounce;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  #ball1 {
+    left:27%;
+    animation-timing-function:linear;
+  }
+  #ball2 {
+    left:56%;
+    animation-timing-function:ease-out;
+  }
+  @keyframes bounce {
+    0% {
+      top: 0px;
+    }
+    100% {
+      top: 249px;
+    }
+  }
+</style>
+<div class="balls" id="ball1"></div>
+<div class="balls" id="ball2"></div>
+-->
+
+
+<!-- Aprenda cómo funcionan las curvas de Bezier
+CSS ofrece una opción además de las palabras clave que brinda un control aún más preciso sobre cómo se desarrolla la animación, 
+mediante el uso de curvas Bezier.
+
+En las animaciones CSS, las curvas Bezier se utilizan con la función cubic-bezier. 
+La forma de la curva representa cómo se desarrolla la animación. La curva vive en un sistema de coordenadas 1 por 1. 
+El eje X(X-axis) de este sistema de coordenadas es la duración de la animación (piense en ello como una escala de tiempo) 
+y el eje Y(Y-axis) es el cambio en la animación. 
+
+La función cubic-bezier consta de cuatro puntos principales que se encuentran en esta cuadrícula de 
+1 por 1: p0, p1, p2 y p3. p0 y p3 están configurados para usted: son los puntos inicial y final que 
+siempre se ubican respectivamente en el origen (0, 0) y (1, 1). Establece los valores x e y para los otros dos puntos, 
+y el lugar donde los coloca en la cuadrícula dicta la forma de la curva que seguirá la animación. Esto se hace en CSS declarando 
+los valores x e y de los puntos de "anclaje" p1 y p2 en la forma: (x1, y1, x2, y2). Reuniéndolo todo, aquí hay un ejemplo de una 
+curva Bezier en código CSS:
+animation-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75);
+
+
+En el ejemplo anterior, los valores de x e y son equivalentes para cada punto (x1 = 0,25 = y1 y x2 = 0,75 = y2), 
+que si recuerdas de la clase de geometría, da como resultado una línea que se extiende desde el origen hasta el punto (1 , 1). 
+Esta animación es un cambio lineal de un elemento durante la duración de una animación y es lo mismo que usar la palabra clave lineal(linear). 
+En otras palabras, cambia a una velocidad constante.
+
+<style>
+  .balls{
+    border-radius: 50%;
+    background: linear-gradient(
+      35deg,
+      #ccffff,
+      #ffcccc
+    );
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    margin-top: 50px;
+    animation-name: bounce;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  #ball1 {
+    left: 27%;
+    animation-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75);
+  }
+  #ball2 {
+    left: 56%;
+    animation-timing-function: ease-out;
+  }
+  @keyframes bounce {
+    0% {
+      top: 0px;
+    }
+    100% {
+      top: 249px;
+    }
+  }
+</style>
+<div class="balls" id="ball1"></div>
+<div class="balls" id="ball2"></div>
+-->
+
+
+<!-- Usar una curva Bézier para mover un gráfico
+A la derecha, se demuestra la diferencia entre la palabra clave de (ease-out)salida gradual (para el elemento azul) 
+y la palabra clave (linear)lineal (para el elemento rojo). Se pueden lograr progresiones de animación similares a las de la palabra 
+clave de salida gradual(ease-out) mediante el uso de una función de curva Bézier cúbica personalizada.
+
+En general, cambiar los puntos de anclaje p1 y p2 impulsa la creación de diferentes curvas Bezier, 
+que controlan cómo progresa la animación a lo largo del tiempo. Aquí hay un ejemplo de una curva Bezier que usa valores 
+para imitar el estilo de salida ease-out:
+animation-timing-function: cubic-bezier(0, 0, 0.58, 1);
+
+Recuerda que todas las funciones cubic-bezier comienzan con p0 en (0, 0) y terminan con p3 en (1, 1). 
+En este ejemplo, la curva se mueve más rápido a través del eje Y (comienza en 0, va a p1 y valor de 0, 
+luego va a p2 y valor de 1) de lo que se mueve a través del eje X (0 para comenzar, luego 0 para p1, hasta 0,58 para p2). 
+Como resultado, el cambio en el elemento animado progresa más rápido que el tiempo de animación de ese segmento. 
+Hacia el final de la curva, la relación entre el cambio en los valores de x e y se invierte: el valor de y se mueve de 1 a 1 
+(sin cambios) y los valores de x se mueven de 0,58 a 1, lo que hace que los cambios de animación progresen más lentamente en 
+comparación con la duración de la animación.
+
+<style>
+  .balls{
+    border-radius: 50%;
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    margin-top: 50px;
+    animation-name: bounce;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  #red {
+    background: red;
+    left: 27%;
+    animation-timing-function: cubic-bezier(0,0,0.58,1);
+  }
+  #blue {
+    background: blue;
+    left: 56%;
+    animation-timing-function: ease-out;
+  }
+  @keyframes bounce {
+    0% {
+      top: 0px;
+    }
+    100% {
+      top: 249px;
+    }
+  }
+</style>
+<div class="balls" id= "red"></div>
+<div class="balls" id= "blue"></div>-->
+
+
+<!-- Haga que el movimiento sea más natural usando una curva Bezier 
+Este desafío anima un elemento para replicar el movimiento de una pelota que se está haciendo malabares. 
+Los desafíos anteriores cubrieron las curvas Bezier cúbicas (linear)lineales y de (ease-out)salida suave, sin embargo, 
+ninguno representa el movimiento de malabarismo con precisión. Necesita personalizar una curva Bezier para esto.
+
+La función de tiempo de animación(animation-timing-function) se repite automáticamente en cada fotograma clave cuando el recuento 
+de iteraciones de animación(animation-iteration-count) se establece en infinito. Dado que hay una regla de fotogramas clave 
+establecida en medio de la duración de la animación (al 50 %), da como resultado dos progresiones de animación idénticas 
+en el movimiento hacia arriba y hacia abajo de la pelota.
+
+La siguiente curva Bezier cúbica simula un movimiento de malabarismo:
+cubic-bezier(0.3, 0.4, 0.5, 1.6);
+
+Observe que el valor de y2 es mayor que 1. Aunque la curva de Bézier cúbica se mapea en un sistema de 
+coordenadas de 1 por 1, y solo puede aceptar valores de x de 0 a 1, el valor de y se puede establecer en números mayores que uno. 
+Esto da como resultado un movimiento de rebote que es ideal para simular la pelota de malabares.
+
+Cambie el valor de la función de temporización de animación del elemento con la identificación 
+de verde a una función cúbica-bezier con valores x1, y1, x2, y2 establecidos respectivamente en 0.311, 0.441, 0.444, 1.649.
+
+<style>
+  .balls {
+    border-radius: 50%;
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    top: 60%;
+    animation-name: jump;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  #red {
+    background: red;
+    left: 25%;
+    animation-timing-function: linear;
+  }
+  #blue {
+    background: blue;
+    left: 50%;
+    animation-timing-function: ease-out;
+  }
+  #green {
+    background: green;
+    left: 75%;
+    animation-timing-function: cubic-bezier(0.311, 0.441,  0.444, 1.649);
+  }
+  @keyframes jump {
+    50% {
+      top: 10%;
+    }
+  }
+</style>
+<div class="balls" id="red"></div>
+<div class="balls" id="blue"></div>
+<div class="balls" id="green"></div>-->
+
+
+<!-- Agregue una alternativa de texto a las imágenes para la accesibilidad de personas con problemas de visión
+Probablemente hayas visto un atributo alt en una etiqueta img en otros desafíos. El texto alternativo describe el 
+contenido de la imagen y proporciona una alternativa de texto. Un atributo alt ayuda en los casos en que la imagen 
+no se carga o el usuario no puede verla.
+<img src="importantLogo.jpeg" alt="Company logo">
+Las personas con discapacidad visual confían en los lectores de pantalla para convertir el contenido web en una interfaz de audio. 
+Siempre debe incluir un atributo alt en su imagen. Según la especificación de HTML5, esto ahora se considera obligatorio. -->
+
+
+<!-- Sepa cuándo el texto alternativo debe dejarse en blanco
+En el último desafío, aprendió que es obligatorio incluir un atributo alt al usar etiquetas img. 
+Sin embargo, a veces las imágenes se agrupan con una leyenda que ya las describe, o se usan solo como decoración. 
+En estos casos, el texto alternativo puede parecer redundante o innecesario.
+
+Cuando una imagen ya se explica con contenido de texto o no agrega significado a una página, 
+el img aún necesita un atributo alt, pero se puede establecer en una cadena vacía. Aquí hay un ejemplo:
+<img src="visualDecoration.jpeg" alt="">
+
+Nota: para las imágenes con una leyenda, es posible que desee incluir texto alternativo, 
+ya que ayuda a los motores de búsqueda a catalogar el contenido de la imagen.-->
+
+
+<!-- Usar encabezados para mostrar relaciones jerárquicas de contenido
+Los encabezados (elementos h1 a h6) son etiquetas de caballo de batalla que ayudan a proporcionar estructura y 
+etiquetado a su contenido. Los lectores de pantalla se pueden configurar para leer solo los encabezados de una página 
+para que el usuario obtenga un resumen.
+El significado semántico significa que la etiqueta que usa alrededor del contenido indica el tipo de información que contiene.
+
+
+Si estuvieras escribiendo un artículo con una introducción, un cuerpo y una conclusión, 
+no tendría mucho sentido poner la conclusión como una subsección del cuerpo en tu esquema. 
+Debería ser su propia sección. De manera similar, las etiquetas de encabezado en una página web deben 
+ir en orden e indicar las relaciones jerárquicas de su contenido.
+
+Como ejemplo, una página con un elemento h2 seguido de varias subsecciones etiquetadas con elementos h4 
+confundiría a un usuario de lector de pantalla. Con seis opciones, es tentador usar una etiqueta porque 
+se ve mejor en un navegador, pero puede usar CSS para editar el tamaño relativo.
+
+cada página siempre debe tener un (y solo uno) elemento h1, que es el tema principal de su contenido. 
+Este y los otros encabezados son utilizados en parte por los motores de búsqueda para comprender el tema de la página.
+
+Camper Cat quiere una página en su sitio dedicada a convertirse en ninja. Ayúdelo a corregir los encabezados 
+para que su marca le dé un significado semántico al contenido y muestre las relaciones correctas entre 
+padres e hijos de sus secciones. Cambie todas las etiquetas h5 al nivel de encabezado adecuado para indicar 
+que son subsecciones de las h2. Use etiquetas h3 para este propósito.
+<h1>How to Become a Ninja</h1>
+<main>
+  <h2>Learn the Art of Moving Stealthily</h2>
+  <h3>How to Hide in Plain Sight</h3>
+  <h3>How to Climb a Wall</h3>
+
+  <h2>Learn the Art of Battle</h2>
+  <h3>How to Strengthen your Body</h3>
+  <h3>How to Fight like a Ninja</h3>
+
+  <h2>Learn the Art of Living with Honor</h2>
+  <h3>How to Breathe Properly</h3>
+  <h3>How to Simplify your Life</h3>
+</main>-->
+
+
+<!-- Saltar directamente al contenido usando el elemento principal
+HTML5 introdujo varios elementos nuevos que brindan a los desarrolladores más opciones al mismo tiempo que incorpora 
+características de accesibilidad. Estas etiquetas incluyen (main)principal, (header) encabezado, (footer) pie de página, 
+(nav) navegación, (article) artículo y (section) sección, entre otras.
+
+De forma predeterminada, un navegador representa estos elementos de forma similar al humilde div. 
+Sin embargo, usarlos donde corresponda le da un significado adicional a su marcado. El nombre de la etiqueta
+por sí solo puede indicar el tipo de información que contiene, lo que agrega significado semántico a ese contenido. 
+
+El elemento (main) principal se usa para envolver el contenido principal, y solo debe haber uno por página.
+Está destinado a rodear la información relacionada con el tema central de su página. No está destinado a 
+incluir elementos que se repiten en las páginas, como enlaces de navegación o pancartas.
+
+La etiqueta principal también tiene una función de punto de referencia incrustada que la tecnología 
+de asistencia puede usar para navegar rápidamente al contenido principal. Si alguna vez ha visto un enlace 
+"Saltar al contenido principal" en la parte superior de una página, el uso de la etiqueta principal proporciona 
+automáticamente esa funcionalidad a los dispositivos de asistencia.
+
+Su código debe tener una etiqueta principal.
+
+Las etiquetas (main) principales, deben estar entre la etiqueta del (header) encabezado de cierre y la etiqueta del 
+(fotter)pie de página de apertura.-->
+
+
+<!-- Envolver contenido en el elemento del (article)artículo 
+
+article es otro de los nuevos elementos de HTML5 que añade significado semántico a su marcado. 
+article es un elemento de sección y se utiliza para envolver contenido independiente y autónomo. 
+La etiqueta funciona bien con entradas de blog, publicaciones en foros o artículos de noticias.
+
+Determinar si el contenido puede ser independiente suele ser una decisión de juicio, 
+pero puede usar un par de pruebas simples. Pregúntese si eliminara todo el contexto circundante, 
+¿ese contenido seguiría teniendo sentido? De manera similar, para el texto, ¿se mantendría el contenido 
+si estuviera en una fuente RSS?
+
+Nota: el elemento de section también es nuevo con HTML5 y tiene un significado semántico 
+ligeramente diferente al de article. Un article es para contenido independiente y una section es 
+para agrupar contenido relacionado temáticamente. Se pueden usar uno dentro del otro, según sea necesario. 
+Por ejemplo, si un libro es el article, entonces cada capítulo es una section. Cuando no haya una relación 
+entre los grupos de contenido, use un div.
+
+<div> - contenido de grupos 
+<sección> - contenido relacionado de grupos 
+<artículo> - contenido independiente y autónomo de grupos
+
+Camper Cat usó etiquetas de artículos para envolver las publicaciones en su página de blog, 
+pero se olvidó de usarlas alrededor de la primera. Cambie la etiqueta div para usar una etiqueta de artículo en su lugar.
+
+<h1>Deep Thoughts with Master Camper Cat</h1>
+<main>
+  <article>
+    <h2>The Garfield Files: Lasagna as Training Fuel?</h2>
+    <p>The internet is littered with varying opinions on nutritional paradigms, from catnip paleo to hairball cleanses. But let's turn our attention to an often overlooked fitness fuel, and examine the protein-carb-NOM trifecta that is lasagna...</p>
+  </article>
+<img src="samuraiSwords.jpeg" alt="">
+  <article>
+    <h2>Defeating your Foe: the Red Dot is Ours!</h2>
+    <p>Felines the world over have been waging war on the most persistent of foes. This red nemesis combines both cunning stealth and lightning speed. But chin up, fellow fighters, our time for victory may soon be near...</p>
+  </article>
+  <img src="samuraiSwords.jpeg" alt="">
+  <article>
+    <h2>Is Chuck Norris a Cat Person?</h2>
+    <p>Chuck Norris is widely regarded as the premier martial artist on the planet, and it's a complete coincidence that anyone who disagrees with this fact mysteriously disappears soon after. But the real question is, is he a cat person?...</p>
+  </article>
+</main>-->
+
+
+<!-- Make Screen Reader Navigation Easier with the header Landmark 
+El siguiente elemento de HTML5 que agrega significado semántico y mejora la accesibilidad es la etiqueta de header. 
+Se utiliza para incluir información introductoria o enlaces de navegación para su etiqueta principal y funciona bien 
+con el contenido que se repite en la parte superior de varias páginas. 
+
+header comparte la función de punto de referencia incrustado que vio con main, lo que permite que las tecnologías 
+de asistencia naveguen rápidamente a ese contenido.
+
+Nota: El encabezado(header) está diseñado para usarse en la etiqueta del cuerpo de su documento HTML. 
+Es diferente al elemento head, que contiene el título de la página, metainformación, etc
+
+
+Camper Cat está escribiendo excelentes artículos sobre el entrenamiento ninja y quiere agregar una página para ellos en su sitio. 
+Cambie el div superior que actualmente contiene el h1 a una etiqueta de encabezado en su lugar.
+<body>
+  <header>
+    <h1>Training with Camper Cat</h1>
+  </header>
+  <main>
+    <section id="stealth">
+      <h2>Stealth &amp; Agility Training</h2>
+      <article><h3>Climb foliage quickly using a minimum spanning tree approach</h3></article>
+      <article><h3>No training is NP-complete without parkour</h3></article>
+    </section>
+    <section id="combat">
+      <h2>Combat Training</h2>
+      <article><h3>Dispatch multiple enemies with multithreaded tactics</h3></article>
+      <article><h3>Goodbye world: 5 proven ways to knock out an opponent</h3></article>
+    </section>
+    <section id="weapons">
+      <h2>Weapons Training</h2>
+      <article><h3>Swords: the best tool to literally divide and conquer</h3></article>
+      <article><h3>Breadth-first or depth-first in multi-weapon training?</h3></article>
+    </section>
+  </main>
+</body>-->
+
+
+<!-- Facilite la navegación del lector de pantalla con el punto de referencia(Landmark) de navegación(nav) 
+El elemento de navegación es otro elemento de HTML5 con la función de punto de referencia incrustada 
+para facilitar la navegación del lector de pantalla. Esta etiqueta está destinada a envolver los principales enlaces 
+de navegación en su página.
+
+Si hay enlaces de sitios repetidos en la parte inferior de la página, no es necesario marcarlos también con una etiqueta de navegación. 
+Usar un pie de página (cubierto en el siguiente desafío) es suficiente.
+
+Camper Cat incluyó enlaces de navegación en la parte superior de su página de entrenamiento, pero los envolvió en un div. 
+Cambie el div a una etiqueta de nav para mejorar la accesibilidad en su página.
+<body>
+  <header>
+    <h1>Training with Camper Cat</h1>
+    <nav>
+      <ul>
+        <li><a href="#stealth">Stealth &amp; Agility</a></li>
+        <li><a href="#combat">Combat</a></li>
+        <li><a href="#weapons">Weapons</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="stealth">
+      <h2>Stealth &amp; Agility Training</h2>
+      <article><h3>Climb foliage quickly using a minimum spanning tree approach</h3></article>
+      <article><h3>No training is NP-complete without parkour</h3></article>
+    </section>
+    <section id="combat">
+      <h2>Combat Training</h2>
+      <article><h3>Dispatch multiple enemies with multithreaded tactics</h3></article>
+      <article><h3>Goodbye world: 5 proven ways to knock out an opponent</h3></article>
+    </section>
+    <section id="weapons">
+      <h2>Weapons Training</h2>
+      <article><h3>Swords: the best tool to literally divide and conquer</h3></article>
+      <article><h3>Breadth-first or depth-first in multi-weapon training?</h3></article>
+    </section>
+  </main>
+</body>-->
+
+
+<!-- Facilite la navegación del lector de pantalla con el punto de referencia del pie de página
+
+Al igual que el header  y la nav, el elemento de footer tiene una función de 
+punto de referencia integrada que permite que los dispositivos de asistencia naveguen rápidamente hacia él. 
+Se utiliza principalmente para contener información de derechos de autor o enlaces a documentos relacionados 
+que normalmente se encuentran en la parte inferior de una página.
+
+La página de entrenamiento de Camper Cat está progresando a buen ritmo. 
+Cambie el div que usó para envolver su información de derechos de autor en la parte inferior de la página a un elemento de pie de página.
+<footer>&copy; 2018 Camper Cat</footer>-->
+
+
+<!-- Mejore la accesibilidad del contenido de audio con el elemento de audio 
+El elemento de audio de HTML5 otorga un significado semántico cuando envuelve el contenido de la transmisión de audio o sonido en el marcado. 
+El contenido de audio también necesita una alternativa de texto para ser accesible a las personas sordas o con dificultades auditivas. 
+Esto se puede hacer con texto cercano en la página o un enlace a una transcripción.
+
+La etiqueta de audio admite el atributo de controles(controls). Esto muestra la reproducción, la pausa y otros controles 
+predeterminados del navegador, y es compatible con la funcionalidad del teclado. Este es un atributo booleano, 
+lo que significa que no necesita un valor, su presencia en la etiqueta activa la configuración.
+Here's an example:
+
+<audio id="meowClip" controls>
+  <source src="audio/meow.mp3" type="audio/mpeg">
+  <source src="audio/meow.ogg" type="audio/ogg">
+</audio>
+
+Nota: el contenido multimedia suele tener componentes tanto visuales como auditivos. Necesita subtítulos sincronizados 
+y una transcripción para que los usuarios con discapacidades visuales y/o auditivas puedan acceder. Generalmente, 
+un desarrollador web no es responsable de crear los subtítulos o la transcripción, pero debe saber incluirlos.
+
+
+Es hora de tomarse un descanso de Camper Cat y conocer a su compañero campista Zersiax (@zersiax), 
+un campeón de la accesibilidad y usuario de lectores de pantalla. Para escuchar un clip de su lector de pantalla en acción, 
+agregue un elemento de audio después de la p. Incluya el atributo de controles. Luego, coloque una etiqueta de origen 
+dentro de las etiquetas de audio con el atributo src configurado en https://s3.amazonaws.com/freecodecamp/screen-reader.mp3 
+y escriba el atributo configurado en "audio/mpeg".
+Note: The audio clip may sound fast and be difficult to understand, but that is a normal speed for screen reader users.
+<body>
+  <header>
+    <h1>Real Coding Ninjas</h1>
+  </header>
+  <main>
+    <p>A sound clip of Zersiax's screen reader in action.</p>
+<audio  controls >
+  <source src="https://s3.amazonaws.com/freecodecamp/screen-reader.mp3" type="audio/mpeg">
+  </audio>
+  </main>
+</body>-->
+
+
+<!-- Mejore la accesibilidad del gráfico con el elemento de figura 
+HTML5 introdujo el elemento figure y el figcaption relacionado. Usados ​​juntos, estos elementos envuelven una representación 
+visual (como una imagen, diagrama o gráfico) junto con su título. Envolver estos elementos juntos brinda un impulso de 
+accesibilidad doble al agrupar semánticamente el contenido relacionado y proporcionar una alternativa de texto que explique la figura(figure).
+
+Para visualizaciones de datos como gráficos, la leyenda se puede usar para señalar brevemente las tendencias o conclusiones 
+para los usuarios con discapacidades visuales. Otro desafío cubre cómo mover una versión de tabla de los datos del gráfico 
+fuera de la pantalla (usando CSS) para los usuarios de lectores de pantalla.
+
+Aquí hay un ejemplo: tenga en cuenta que el figcaption va dentro de las etiquetas de la figura(figure) y 
+se puede combinar con otros elementos:
+<figure>
+  <img src="roundhouseDestruction.jpeg" alt="Photo of Camper Cat executing a roundhouse kick">
+  <br>
+  <figcaption>
+    Master Camper Cat demonstrates proper form of a roundhouse kick.
+  </figcaption>
+</figure>
+
+Camper Cat está trabajando arduamente para crear un gráfico de barras apiladas que muestra la cantidad de tiempo 
+por semana para entrenar en sigilo, combate y armas. Ayúdelo a estructurar mejor su página cambiando la etiqueta 
+div que usó por una etiqueta de figura y la etiqueta p que rodea el título por una etiqueta de figcaption.-->
+
+
+<!-- Mejore la accesibilidad de los campos de formulario con la Label Elemento 
+
+La mejora de la accesibilidad con el marcado HTML semántico se aplica al uso de atributos y nombres de etiquetas apropiados. 
+Los siguientes desafíos cubren algunos escenarios importantes que usan atributos en formularios.
+
+La etiqueta label envuelve el texto de un elemento de control de formulario específico, 
+generalmente el nombre o la etiqueta de una opción. Esto vincula el significado con el elemento y hace que el formulario 
+sea más legible. El atributo for en una etiqueta label se asocia explícitamente a esa label con el control de formulario 
+y lo usan los lectores de pantalla.
+
+Aprendió sobre los botones de radio y sus etiquetas en la sección HTML básico. En esa lección, 
+envolvimos el elemento de entrada del botón de radio dentro de un elemento de label junto con el texto de 
+la etiqueta para poder hacer clic en el texto. Otra forma de lograr esto es usando el atributo for, como se explica en esta lección.
+
+El valor del atributo for debe ser el mismo que el valor del atributo id del control de formulario. Aquí hay un ejemplo:
+<form>
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name">
+</form>
+Camper Cat espera mucho interés en sus publicaciones de blog bien pensadas y quiere incluir un formulario de registro 
+por correo electrónico. Agregue un atributo for en la etiqueta de correo electrónico que coincida con la identificación 
+en su campo de entrada.
+
+
+-->
+
+
+<!-- Envuelva los botones de radio en un elemento fieldset para una mejor accesibilidad 
+
+El siguiente tema del formulario cubre la accesibilidad de los botones de opción. A cada opción se le asigna 
+una label  con un atributo for relacionado con la (id)identificación del elemento correspondiente, tal como se 
+cubrió en el último desafío. Dado que los botones de opción a menudo vienen en un grupo en el que el usuario 
+debe elegir uno, hay una manera de mostrar semánticamente que las opciones son parte de un conjunto.
+
+La etiqueta fieldset rodea toda la agrupación de botones de radio para lograr esto.
+A menudo utiliza una etiqueta de (legend)leyenda para proporcionar una descripción de la agrupación, 
+que los lectores de pantalla leen para cada opción en el elemento de conjunto de campos(fieldset).
+
+El envoltorio de conjunto de campos y la etiqueta de leyenda no son necesarios cuando las opciones se explican por sí mismas, 
+como una selección de género. Usar una etiqueta con el atributo for para cada botón de radio es suficiente.
+
+Aquí hay un ejemplo:
+<form>
+  <fieldset>
+    <legend>Choose one of these three items:</legend>
+    <input id="one" type="radio" name="items" value="one">
+    <label for="one">Choice One</label><br>
+    <input id="two" type="radio" name="items" value="two">
+    <label for="two">Choice Two</label><br>
+    <input id="three" type="radio" name="items" value="three">
+    <label for="three">Choice Three</label>
+  </fieldset>
+</form>-->
+
+
+<!-- Agregar un selector de fecha accesible
+Los formularios a menudo incluyen el campo de entrada(input), que se puede usar para crear varios controles de formulario diferentes. 
+El atributo de type de este elemento indica qué tipo de elemento de entrada(input) se creará.
+
+Es posible que haya notado el texto(text) y los tipos de entrada de envío(submit) en desafíos anteriores, 
+y HTML5 introdujo una opción para especificar un campo de fecha(date). Dependiendo de la compatibilidad del navegador, 
+aparece un selector de fecha en el campo de entrada(input) cuando está enfocado, lo que facilita el llenado de un formulario 
+para todos los usuarios.
+
+Para navegadores más antiguos, el tipo predeterminado será texto, por lo que ayuda a mostrar a los usuarios 
+el formato de fecha esperado en la etiqueta o el texto del marcador de posición por si acaso.
+
+Aquí hay un ejemplo:
+<form>
+  <p>Tell us the best date for the competition</p>
+  <label for="pickdate">Preferred Date:</label>
+  <input type="date"  id="pickdate" name="date">
+  <input type="submit" name="submit" value="Submit">
+</form> -->
+
+
+<!-- Estandarizar tiempos con el atributo de datetime de HTML5 
+Continuando con el tema de la fecha, HTML5 también introdujo el elemento de time junto con un atributo 
+de fecha y hora(datetime) para estandarizar los tiempos. El elemento de time es un elemento en línea que puede envolver 
+una fecha u hora en una página. Un atributo de fecha y hora(datetime) contiene un formato válido de esa fecha. Este es 
+el valor al que acceden los dispositivos de asistencia. Ayuda a evitar confusiones al indicar una versión estandarizada 
+de una época, incluso si está escrita de manera informal o coloquial en el texto.
+
+Aquí hay un ejemplo:
+<p>Thank you to everyone for responding to Master Camper Cat's survey.
+  <time datetime="2016-09-15">Thursday, September 15<sup>th</sup></time>
+</p>-->
+
+
+<!-- Haga que los elementos solo sean visibles para un lector de pantalla mediante el uso de CSS personalizado
+¿Ha notado que todos los desafíos de accesibilidad aplicados hasta ahora no han usado ningún CSS? 
+Esto muestra la importancia de utilizar un esquema de documento lógico y etiquetas semánticamente significativas 
+alrededor de su contenido antes de introducir el aspecto del diseño visual. 
+
+Sin embargo, la magia de CSS también puede mejorar la accesibilidad en su página cuando desea ocultar 
+visualmente contenido destinado solo a lectores de pantalla. Esto sucede cuando la información está en 
+un formato visual (como un gráfico), pero los usuarios de lectores de pantalla necesitan una presentación 
+alternativa (como una tabla) para acceder a los datos. CSS se utiliza para colocar los elementos exclusivos del 
+lector de pantalla fuera del área visual de la ventana del navegador.
+
+Here's an example of the CSS rules that accomplish this:
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  top: auto;
+  overflow: hidden;
+}
+Nota: Los siguientes enfoques de CSS NO harán lo mismo:
+display: none; o visibility: hidden; oculta contenido para todos, incluidos los usuarios de lectores de pantalla
+Valores cero para tamaños de píxeles, como width: 0px; height: 0px;; elimina ese elemento del flujo de su documento, 
+lo que significa que los lectores de pantalla lo ignorarán-->
+
+
+<!-- Mejore la legibilidad con texto de alto contraste
+El bajo contraste entre los colores de primer plano y de fondo puede dificultar la lectura del texto. Un contraste suficiente 
+mejora la legibilidad de su contenido, pero ¿qué significa exactamente "suficiente"?
+
+Las Pautas de accesibilidad al contenido web (WCAG) recomiendan al menos una relación de contraste de 4,5 a 1 para el texto normal. 
+La relación se calcula comparando los valores de luminancia relativos de dos colores. Esto va desde 1:1 para el mismo color, 
+o sin contraste, hasta 21:1 para blanco contra negro, el contraste más sustancial. Hay muchas herramientas de verificación 
+de contraste disponibles en línea que calculan esta relación por usted.
+
+La elección de Camper Cat de texto gris claro sobre un fondo blanco para su publicación reciente en el 
+blog tiene una relación de contraste de 1,5:1, lo que dificulta su lectura. Cambie el color del texto del gris 
+actual (#D3D3D3) a un gris más oscuro (#636363) para mejorar la relación de contraste a 6:1.
+<style>
+  body {
+    color: #636363;
+    background-color: #FFF;
+  }
+</style>-->
+
+
+<!--Evite problemas de daltonismo mediante el uso de suficiente contraste 
+El color es una gran parte del diseño visual, pero su uso presenta dos problemas de accesibilidad. 
+Primero, el color por sí solo no debe usarse como la única forma de transmitir información importante 
+porque los usuarios de lectores de pantalla no lo verán. En segundo lugar, los colores de primer plano 
+y de fondo necesitan suficiente contraste para que los usuarios daltónicos puedan distinguirlos.
+
+Los usuarios daltónicos tienen problemas para distinguir algunos colores de otros, generalmente en el tono, 
+pero a veces también en la luminosidad. Puede recordar que la relación de contraste se calcula utilizando 
+los valores de luminancia relativa (o luminosidad) de los colores de primer plano y de fondo.
+
+En la práctica, la relación de contraste de 4,5:1 se puede alcanzar sombreando (agregando negro) 
+el color más oscuro y tiñendo (agregando blanco) el color más claro. Los tonos más oscuros en la 
+rueda de colores se consideran tonos de azules, violetas, magentas y rojos, mientras que los colores 
+más claros son naranjas, amarillos, verdes y azul verdosos.
+
+Camper Cat está experimentando con el uso de color para el texto y el fondo de su blog, pero su 
+combinación actual de un color de fondo verdoso con un color de texto granate tiene una relación de 
+contraste de 2,5:1. Puede ajustar fácilmente la luminosidad de los colores, ya que los declaró usando 
+la propiedad CSS hsl() (que significa tono, saturación, luminosidad) cambiando el tercer argumento. 
+Aumente el valor de luminosidad del color de fondo del 35 % al 55 % y disminuya el valor de luminosidad 
+del color del 20 % al 15 %. Esto mejora el contraste a 5.9:1.
+<style>
+  body {
+    color: hsl(0, 55%, 15%);
+    background-color: hsl(120, 25%, 55%);
+  }
+</style>-->
+
+
+<!-- Evite los problemas de daltonismo eligiendo cuidadosamente los colores que transmiten información
+Hay varias formas de daltonismo. Estos pueden variar desde una sensibilidad reducida a una cierta longitud 
+de onda de luz hasta la incapacidad de ver el color en absoluto. La forma más común es una sensibilidad reducida p
+ara detectar greens. 
+
+Por ejemplo, si dos colores verdes similares son el color frontal y el color de fondo de su contenido, 
+es posible que un usuario daltónico no pueda distinguirlos. Los colores cercanos se pueden considerar 
+como vecinos en la rueda de colores, y esas combinaciones deben evitarse al transmitir información importante.
+
+Nota: Algunas herramientas de selección de colores en línea incluyen simulaciones visuales de cómo aparecen 
+los colores para diferentes tipos de daltonismo. Estos son excelentes recursos además de las calculadoras de 
+verificación de contraste en línea.
+
+Camper Cat está probando diferentes estilos para un botón importante, pero el color de fondo amarillo (#FFFF33) 
+y el color de texto verde (#33FF33) son tonos vecinos en la rueda de colores y prácticamente indistinguibles 
+para algunos usuarios daltónicos. (Su ligereza similar también falla en la verificación de la relación de contraste).
+Cambie el color del texto a azul oscuro (#003366) para resolver ambos problemas.
+<style>
+  button {
+    color: #003366;
+    background-color: #FFFF33;
+    font-size: 14px;
+    padding: 10px;
+  }
+<style>-->
+
+
+<!-- Dar significado a los enlaces mediante el uso de texto de enlace descriptivo
+Los usuarios de lectores de pantalla tienen varias opciones para el tipo de contenido que lee su dispositivo. 
+Estas opciones incluyen saltar a (o sobre) elementos de referencia, saltar al contenido principal u obtener 
+un resumen de página de los encabezados. Otra opción es escuchar solo los enlaces disponibles en una página.
+
+Los lectores de pantalla hacen esto leyendo el texto del enlace, o lo que hay entre las etiquetas de anclaje (a). 
+Tener una lista de enlaces "haga clic aquí" o "leer más" no es útil. En su lugar, utilice un texto breve pero descriptivo 
+dentro de las etiquetas a para brindar más significado a estos usuarios.
+
+-Su código debe mover el ancla a las etiquetas alrededor de las palabras Haga clic aquí para envolver las palabras 
+información sobre las baterías.
+-El elemento a debe tener un atributo href con un valor de una cadena vacía "".
+-El elemento a debe tener una etiqueta de cierre.
+<body>
+  <header>
+    <h1>Deep Thoughts with Master Camper Cat</h1>
+  </header>
+  <article>
+    <h2>Defeating your Foe: the Red Dot is Ours!</h2>
+    <p>Felines the world over have been waging war on the most persistent of foes. This red nemesis combines both cunning stealth and lightning speed. But chin up, fellow fighters, our time for victory may soon be near. Click here for <a href="">information about batteries</a></p>
+  </article>
+</body>-->
+
+
+<!-- Haga que los enlaces sean navegables con claves de acceso HTML 
+HTML ofrece el atributo accesskey para especificar una tecla de acceso directo para activar o enfocar un elemento. 
+Agregar un atributo de tecla de acceso puede hacer que la navegación sea más eficiente para los usuarios de solo teclado.
+
+HTML5 permite usar este atributo en cualquier elemento, pero es particularmente útil cuando se usa con elementos interactivos. 
+Esto incluye enlaces, botones y controles de formulario.
+
+Aquí hay un ejemplo:
+<button accesskey="b">Important Button</button>
+
+<body>
+  <header>
+    <h1>Deep Thoughts with Master Camper Cat</h1>
+  </header>
+  <article>
+    <h2><a id="first" href="#" accesskey="g">The Garfield Files: Lasagna as Training Fuel?</a></h2>
+    <p>The internet is littered with varying opinions on nutritional paradigms, from catnip paleo to hairball cleanses. But let's turn our attention to an often overlooked fitness fuel, and examine the protein-carb-NOM trifecta that is lasagna...</p>
+  </article>
+  <footer>&copy; 2018 Camper Cat</footer>
+</body>-->
+
+
+<!-- Use tabindex para agregar el foco del teclado a un elemento
+El atributo HTML tabindex tiene tres funciones distintas relacionadas con el enfoque del teclado de un elemento. 
+Cuando está en una etiqueta, indica que se puede enfocar el elemento. El valor (un número entero que es positivo, negativo o cero) 
+determina el comportamiento.
+
+Ciertos elementos, como enlaces y controles de formulario, reciben automáticamente el enfoque del teclado cuando un usuario 
+pasa por una página. Está en el mismo orden en que vienen los elementos en el código fuente HTML. Esta misma funcionalidad 
+se puede dar a otros elementos, como (div, span y p), colocando un atributo (tabindex="0") en ellos. Aquí hay un ejemplo:
+<div tabindex="0">I need keyboard focus!</div>
+
+Nota: Un valor tabindex negativo (típicamente -1) indica que un elemento es enfocable, pero no accesible por el teclado. 
+Este método generalmente se usa para enfocar el contenido mediante programación (como cuando se activa un div que se usa 
+para una ventana emergente), y está más allá del alcance de estos desafíos.
+
+Camper Cat creó una nueva encuesta para recopilar información sobre sus usuarios. Él sabe que los campos de entrada 
+obtienen automáticamente el foco del teclado, pero quiere asegurarse de que los usuarios de su teclado se detengan en 
+las instrucciones mientras tabulan a través de los elementos. Agregue un atributo tabindex a la etiqueta p y establezca 
+su valor en 0. Bonificación: el uso de tabindex también permite que la pseudoclase CSS: enfoque funcione en la etiqueta p.
+<head>
+  <style>
+  p:focus {
+    background-color: yellow;
+  }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ninja Survey</h1>
+  </header>
+  <section>
+    <form>
+<p tabindex="0">Instructions: Fill in ALL your information then click <b>Submit</b></p>-->
+
+
+<!-- Use tabindex para especificar el orden de enfoque del teclado para varios elementos
+El atributo tabindex también especifica el orden de tabulación exacto de los elementos. Esto se logra cuando el valor del atributo 
+se establece en un número positivo de 1 o superior.
+
+Establecer un tabindex="1" traerá el enfoque del teclado a ese elemento primero. Luego recorre la secuencia de valores tabindex especificados 
+(2, 3, etc.), antes de pasar a los elementos predeterminados y tabindex="0".
+
+Es importante tener en cuenta que cuando el orden de tabulación se configura de esta manera, anula el orden predeterminado (que usa la fuente HTML). 
+Esto puede confundir a los usuarios que esperan iniciar la navegación desde la parte superior de la página. Esta técnica puede ser necesaria 
+en algunas circunstancias, pero en términos de accesibilidad, tenga cuidado antes de aplicarla.
+
+Aquí hay un ejemplo:
+<div tabindex="1">I get keyboard focus, and I get it first!</div>
+<div tabindex="2">I get keyboard focus, and I get it second!</div>
+
+Camper Cat has a search field on his Inspirational Quotes page that he plans to position in the upper right corner with CSS. 
+He wants the search input and submit input form controls to be the first two items in the tab order. Add a tabindex attribute 
+set to 1 to the search input, and a tabindex attribute set to 2 to the submit input.
+
+Camper Cat tiene un campo de búsqueda en su página de citas inspiradoras que planea colocar en la esquina superior derecha con CSS. 
+Quiere que los controles del formulario de entrada de búsqueda(input) y entrada de envío(submit) sean los dos primeros elementos en el orden de tabulación. 
+Agregue un atributo (tabindex) establecido en 1 a la entrada de búsqueda(input) y un atributo tabindex establecido en 2 a la entrada de envío(submit).
+
+Otra cosa a tener en cuenta es que algunos navegadores pueden colocarlo en el medio de su orden de tabulación cuando se hace clic en un elemento. 
+Se ha agregado un elemento a la página que garantiza que siempre comenzará al principio de su orden de tabulación-->
+
+
+<!-- Responsive Web Design Principles-->
+
+<!-- Crear una consulta de medios
+
+Las consultas de medios son una nueva técnica introducida en CSS3 que cambia la presentación del contenido en función 
+de los diferentes tamaños de ventana gráfica. La ventana gráfica es el área visible de un usuario de una página web y 
+es diferente según el dispositivo utilizado para acceder al sitio.
+
+Las consultas de medios constan de un tipo de medio y, si ese tipo de medio coincide con el tipo de dispositivo en el 
+que se muestra el documento, se aplican los estilos. Puede tener tantos selectores y estilos dentro de su consulta de medios como desee.
+
+Aquí hay un ejemplo de una consulta de medios que devuelve el contenido cuando el ancho del dispositivo es menor o igual a 100 px:
+@media (max-width: 100px) { /* CSS Rules */ }
+
+
+y la siguiente consulta de medios devuelve el contenido cuando la altura del dispositivo es mayor o igual a 350 px:
+@media (min-height: 350px) { /* CSS Rules */ }
+
+1- Debe declarar una consulta @media para dispositivos con una altura inferior o igual a 800 px.
+2- Su elemento p debe tener un tamaño de fuente de 10 px cuando la altura del dispositivo es menor o igual a 800 px.
+3- Su elemento p debe tener un tamaño de fuente inicial de 20 px cuando la altura del dispositivo es superior a 800 px.
+
+<style>
+  p {
+    font-size: 20px;
+  }
+  /* Only change code below this line */
+  @media (max-height: 800px) {
+    p{
+      font-size:10px
+    }
+  }
+  /* Only change code above this line */
+</style>
+<p >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis tempus massa. Aenean erat nisl, gravida vel vestibulum cursus, 
+interdum sit amet lectus. Sed sit amet quam nibh. Suspendisse quis tincidunt nulla. In hac habitasse platea dictumst. 
+Ut sit amet pretium nisl. Vivamus vel mi sem. Aenean sit amet consectetur sem. Suspendisse pretium, purus et gravida consequat,
+nunc ligula ultricies diam, at aliquet velit libero a dui.</p>-->
+
+
+<!-- Hacer una imagen Responsive
+
+Hacer que las imágenes respondan con CSS es realmente muy simple. Solo necesita agregar estas propiedades a una imagen:
+img {
+  max-width: 100%;
+  height: auto;
+}
+El ancho máximo(max-width) de 100 % se asegurará de que la imagen nunca sea más ancha que el contenedor en el que se encuentra, 
+y la altura(height) automática(auto) hará que la imagen mantenga su relación de aspecto original.
+
+
+Agregue las reglas de estilo a la clase responsive-img para que responda. Nunca debe ser más ancho que su contenedor 
+(en este caso, es la ventana de vista previa) y debe mantener su relación de aspecto original. Una vez que haya agregado su código, 
+cambie el tamaño de la vista previa para ver cómo se comportan sus imágenes.
+<style>
+.responsive-img {
+  max-width:100%;
+  height: auto;
+}
+img {
+  width: 600px;
+}
+</style>
+<img class="responsive-img" src="https://s3.amazonaws.com/freecodecamp/FCCStickerPack.jpg" alt="freeCodeCamp stickers set">
+<img class="responsive-img" src="https://s3.amazonaws.com/freecodecamp/FCCStickerPack.jpg" alt="freeCodeCamp stickers set">
+-->
+
+
+<!-- Use una imagen Retina para pantallas de mayor resolución: mantener la resolucion de imagenes
+Con el aumento de los dispositivos conectados a Internet, sus tamaños y especificaciones varían, y las pantallas que usan pueden 
+ser diferentes interna y externamente. La densidad de píxeles es un aspecto que puede ser diferente en un dispositivo de otros y 
+esta densidad se conoce como píxeles por pulgada (PPI) o puntos por pulgada (DPI). La pantalla de este tipo más famosa es la conocida 
+como "Pantalla Retina" en las últimas computadoras portátiles Apple MacBook Pro y, recientemente, en las computadoras iMac. 
+Debido a la diferencia en la densidad de píxeles entre las pantallas "Retina" y "No Retina", algunas imágenes que no se han creado 
+teniendo en cuenta una pantalla de alta resolución podrían verse "pixeladas" cuando se representan en una pantalla de alta resolución.
+
+La forma más sencilla de hacer que sus imágenes aparezcan correctamente en pantallas de alta resolución, como la "pantalla retina" 
+de MacBook Pro, es definir sus valores de ancho y alto como solo la mitad de lo que es el archivo original. Aquí hay un ejemplo de 
+una imagen que solo usa la mitad de la altura y el ancho originales:
+<style>
+  img { height: 250px; width: 250px; }
+</style>
+<img src="coolPic500x500" alt
+###Ejemplo#############
+<style>
+  img{
+    width:100px;
+    height:100px;
+  }
+</style>
+<img src="https://s3.amazonaws.com/freecodecamp/FCCStickers-CamperBot200x200.jpg" alt="freeCodeCamp sticker that says 
+'Because CamperBot Cares'">-->
+
+
+<!-- Hacer que la tipografía sea Responsive 
+En lugar de usar em o px para cambiar el tamaño del texto, puede usar unidades de ventana gráfica para una tipografía receptiva. 
+Las unidades de ventana gráfica, como los porcentajes, son unidades relativas, pero se basan en diferentes elementos. Las unidades 
+de ventana gráfica son relativas a las dimensiones de la ventana gráfica (ancho o alto) de un dispositivo, y los porcentajes son 
+relativos al tamaño del elemento contenedor principal.
+
+Las cuatro unidades diferentes de ventana gráfica son:
+vw (ancho de la ventana gráfica): 10vw sería el 10% del ancho de la ventana gráfica.
+vh (altura de la ventana gráfica): 3vh sería el 3 % de la altura de la ventana gráfica.
+vmin (mínimo de ventana gráfica): 70vmin sería el 70% de la dimensión más pequeña de la ventana gráfica (alto o ancho).
+vmax (máximo de la ventana gráfica): 100vmax sería el 100% de la dimensión más grande de la ventana gráfica (alto o ancho).
+
+Aquí hay un ejemplo que establece una etiqueta de body al 30% del ancho(width) de la ventana gráfica.
+body { width: 30vw; }
+
+1- Su etiqueta h2 debe tener un ancho de 80vw.
+2- Su etiqueta p debe tener un ancho de 75vmin.
+<style>
+  h2{
+    width:80vw;
+  }
+  p{
+    width:75vmin;
+  }
+</style>
+<h2>Importantus Ipsum</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis tempus massa. Aenean erat nisl, 
+gravida vel vestibulum cursus, interdum sit amet lectus. Sed sit amet quam nibh. Suspendisse quis tincidunt nulla. 
+In hac habitasse platea dictumst. Ut sit amet pretium nisl. Vivamus vel mi sem. Aenean sit amet consectetur sem. 
+Suspendisse pretium, purus et gravida consequat, nunc ligula ultricies diam, at aliquet velit libero a dui.</p>-->
+
+
+<!-- Usar pantalla: flexionar para colocar dos cajas
+Esta sección usa estilos de desafío alternativos para mostrar cómo usar CSS para colocar elementos de una manera flexible. 
+Primero, un desafío explicará la teoría, luego un desafío práctico usando un componente simple de tweet aplicará el concepto de flexbox.
+
+Colocando la pantalla de propiedades CSS: flex;(display: flex;) en un elemento le permite usar otras propiedades flexibles 
+para crear una página receptiva.
+
+Agregue la visualización de propiedades CSS a #box-container y establezca su valor en flex.
+<style>
+  #box-container {
+    height: 500px;
+    display:flex;
+  }
+
+  #box-1 {
+    background-color: dodgerblue;
+    width: 50%;
+    height: 50%;
+  }
+
+  #box-2 {
+    background-color: orangered;
+    width: 50%;
+    height: 50%;
+  }
+</style>
+<div id="box-container">
+  <div id="box-1"></div>
+  <div id="box-2"></div>
+</div>-->
+
+
+<!-- Agrega Flex Superpowers al Tweet Incrustado 
+A la derecha está el tweet incrustado que se usará como ejemplo práctico. Algunos de los elementos se verían mejor con 
+un diseño diferente. El último desafío demostró display: flex. Aquí lo agregará a varios componentes en el tweet incrustado 
+para comenzar a ajustar su posicionamiento.
+
+Agregue (display: flex)  a todos los  elementos; tenga en cuenta que los selectores 
+ya están configurados en el CSS:
+
+header, el .profile-name del encabezado, el .follow-btn del encabezado, el h3 y h4 del encabezado, el pie de página(footer) y 
+las .stats del pie de página.
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  header {
+    display: flex;
+  }
+  header .profile-thumbnail {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+  }
+  header .profile-name {
+    display: flex;
+    margin-left: 10px;
+  }
+  header .follow-btn {
+    display: flex;
+    margin: 0 0 0 auto;
+  }
+  header .follow-btn button {
+    border: 0;
+    border-radius: 3px;
+    padding: 5px;
+  }
+  header h3, header h4 {
+    display: flex;
+    margin: 0;
+  }
+  #inner p {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+  #inner hr {
+    margin: 20px 0;
+    border-style: solid;
+    opacity: 0.1;
+  }
+  footer {
+    display: flex;
+  }
+  footer .stats {
+    display: flex;
+    font-size: 15px;
+  }
+  footer .stats strong {
+    font-size: 18px;
+  }
+  footer .stats .likes {
+    margin-left: 10px;
+  }
+  footer .cta {
+    margin-left: auto;
+  }
+  footer .cta button {
+    border: 0;
+    background: transparent;
+  }
+</style>
+<header>
+  <img src="https://freecodecamp.s3.amazonaws.com/quincy-twitter-photo.jpg" alt="Quincy Larson's profile picture" class="profile-thumbnail">
+  <div class="profile-name">
+    <h3>Quincy Larson</h3>
+    <h4>@ossia</h4>
+  </div>
+  <div class="follow-btn">
+    <button>Follow</button>
+  </div>
+</header>
+<div id="inner">
+  <p>I meet so many people who are in search of that one trick that will help them work smart. Even if you work smart, you still have to work hard.</p>
+  <span class="date">1:32 PM - 12 Jan 2018</span>
+  <hr>
+</div>
+<footer>
+  <div class="stats">
+    <div class="Retweets">
+      <strong>107</strong> Retweets
+    </div>
+    <div class="likes">
+      <strong>431</strong> Likes
+    </div>
+  </div>
+  <div class="cta">
+    <button class="share-btn">Share</button>
+    <button class="retweet-btn">Retweet</button>
+    <button class="like-btn">Like</button>
+  </div>
+</footer>-->
+
+
+<!-- Use la propiedad de flex-direction para hacer una fila
+Agregar display:flex; a un elemento lo convierte en un contenedor flexible. Esto hace posible alinear cualquier hijo 
+de ese elemento en filas o columnas. Esto se hace agregando la propiedad de dirección flexible(flex-direction) al elemento principal y 
+configurándolo en fila o columna. Al crear una fila, los elementos secundarios se alinearán horizontalmente y al crear una columna, 
+los elementos secundarios se alinearán verticalmente.
+
+Otras opciones para la dirección flexible son fila inversa y columna inversa.
+
+Nota: El valor predeterminado para la propiedad de dirección flexible es fila.
+Agregue la propiedad CSS flex-direction al elemento #box-container y asígnele un valor de fila inversa.
+<style>
+  #box-container {
+    display: flex;
+    height: 500px;
+    flex-direction:row-reverse;
+  }
+  #box-1 {
+    background-color: dodgerblue;
+    width: 50%;
+    height: 50%;
+  }
+  #box-2 {
+    background-color: orangered;
+    width: 50%;
+    height: 50%;
+  }
+</style>
+<div id="box-container">
+  <div id="box-1"></div>
+  <div id="box-2"></div>
+</div>-->
+
+
+<!--   Aplique la propiedad de flex-direction para crear filas en el Tweet incrustado 
+El header  y el footer en el ejemplo de inserción de tweet tienen elementos secundarios que podrían organizarse como 
+filas usando la propiedad de flex-direction. Esto le dice a CSS que alinee a los niños horizontalmente.
+
+Agregue la propiedad CSS flex-direction tanto al header  como al footer y establezca el valor en row.
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  header {
+    display: flex;
+    flex-direction:row;
+  }
+  header .profile-thumbnail {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+  }
+  header .profile-name {
+    display: flex;
+    margin-left: 10px;
+  }
+  header .follow-btn {
+    display: flex;
+    margin: 0 0 0 auto;
+  }
+  header .follow-btn button {
+    border: 0;
+    border-radius: 3px;
+    padding: 5px;
+  }
+  header h3, header h4 {
+    display: flex;
+    margin: 0;
+  }
+  #inner p {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+  #inner hr {
+    margin: 20px 0;
+    border-style: solid;
+    opacity: 0.1;
+  }
+  footer {
+    display: flex;
+    flex-direction:row;
+  }
+  footer .stats {
+    display: flex;
+    font-size: 15px;
+  }
+  footer .stats strong {
+    font-size: 18px;
+  }
+  footer .stats .likes {
+    margin-left: 10px;
+  }
+  footer .cta {
+    margin-left: auto;
+  }
+  footer .cta button {
+    border: 0;
+    background: transparent;
+  }
+</style>
+<header>
+  <img src="https://freecodecamp.s3.amazonaws.com/quincy-twitter-photo.jpg" alt="Quincy Larson's profile picture" class="profile-thumbnail">
+  <div class="profile-name">
+    <h3>Quincy Larson</h3>
+    <h4>@ossia</h4>
+  </div>
+  <div class="follow-btn">
+    <button>Follow</button>
+  </div>
+</header>
+<div id="inner">
+  <p>I meet so many people who are in search of that one trick that will help them work smart. Even if you work smart, you still have to work hard.</p>
+  <span class="date">1:32 PM - 12 Jan 2018</span>
+  <hr>
+</div>
+<footer>
+  <div class="stats">
+    <div class="Retweets">
+      <strong>107</strong> Retweets
+    </div>
+    <div class="likes">
+      <strong>431</strong> Likes
+    </div>
+  </div>
+  <div class="cta">
+    <button class="share-btn">Share</button>
+    <button class="retweet-btn">Retweet</button>
+    <button class="like-btn">Like</button>
+  </div>
+</footer>-->
+
+
+<!-- Use la propiedad de flex-direction para hacer una columna
+Los últimos dos desafíos utilizaron la propiedad de flex-direction establecida en row. Esta propiedad también puede 
+crear una columna apilando verticalmente los elementos secundarios de un contenedor flexible.
+
+Agregue la propiedad CSS flex-direction al elemento #box-container y asígnele un valor de columna.
+<style>
+  #box-container {
+    display: flex;
+    height: 500px;
+    flex-direction:column;
+  }
+  #box-1 {
+    background-color: dodgerblue;
+    width: 50%;
+    height: 50%;
+  }
+  #box-2 {
+    background-color: orangered;
+    width: 50%;
+    height: 50%;
+  }
+</style>
+<div id="box-container">
+  <div id="box-1"></div>
+  <div id="box-2"></div>
+</div>-->
+
+
+<!-- Aplique la propiedad de flex-direction para crear una columna en el Tweet incrustado 
+El header  y el footer del tweet incrustado usaban la propiedad de flex-direction anteriormente con un valor de row. 
+De manera similar, los elementos dentro del elemento .profile-name funcionarían bien apilados como una columna(column).
+
+Agregue la propiedad CSS flex-direction al elemento .profile-name del encabezado y establezca el valor en columna.
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  header, footer {
+    display: flex;
+    flex-direction: row;
+  }
+  header .profile-thumbnail {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+  }
+  header .profile-name {
+    display: flex;
+    flex-direction:column;
+    margin-left: 10px;
+  }
+  header .follow-btn {
+    display: flex;
+    margin: 0 0 0 auto;
+  }
+  header .follow-btn button {
+    border: 0;
+    border-radius: 3px;
+    padding: 5px;
+  }
+  header h3, header h4 {
+    display: flex;
+    margin: 0;
+  }
+  #inner p {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+  #inner hr {
+    margin: 20px 0;
+    border-style: solid;
+    opacity: 0.1;
+  }
+  footer .stats {
+    display: flex;
+    font-size: 15px;
+  }
+  footer .stats strong {
+    font-size: 18px;
+  }
+  footer .stats .likes {
+    margin-left: 10px;
+  }
+  footer .cta {
+    margin-left: auto;
+  }
+  footer .cta button {
+    border: 0;
+    background: transparent;
+  }
+</style>
+<header>
+  <img src="https://freecodecamp.s3.amazonaws.com/quincy-twitter-photo.jpg" alt="Quincy Larson's profile picture" class="profile-thumbnail">
+  <div class="profile-name">
+    <h3>Quincy Larson</h3>
+    <h4>@ossia</h4>
+  </div>
+  <div class="follow-btn">
+    <button>Follow</button>
+  </div>
+</header>
+<div id="inner">
+  <p>I meet so many people who are in search of that one trick that will help them work smart. Even if you work smart, you still have to work hard.</p>
+  <span class="date">1:32 PM - 12 Jan 2018</span>
+  <hr>
+</div>
+<footer>
+  <div class="stats">
+    <div class="Retweets">
+      <strong>107</strong> Retweets
+    </div>
+    <div class="likes">
+      <strong>431</strong> Likes
+    </div>
+  </div>
+  <div class="cta">
+    <button class="share-btn">Share</button>
+    <button class="retweet-btn">Retweet</button>
+    <button class="like-btn">Like</button>
+  </div>
+</footer>-->
+
+
+<!--Alinear elementos usando la propiedad de justificar contenido
+A veces, los artículos flexibles dentro de un contenedor flexible no llenan todo el espacio del contenedor. 
+Es común querer decirle a CSS cómo alinear y espaciar los elementos flexibles de cierta manera. Afortunadamente, 
+la propiedad de justificar el contenido tiene varias opciones para hacer esto. Pero primero, hay una terminología importante 
+que debe comprender antes de revisar esas opciones.
+
+Aquí hay una imagen útil de W3C que ilustra los conceptos a continuación para un contenedor flexible de 'fila'.
+https://www.w3.org/TR/css-flexbox-1/images/flex-direction-terms.svg
+
+Recuerde que configurar un contenedor flexible como una fila coloca los elementos flexibles uno al lado del otro de izquierda a derecha. 
+Un contenedor flexible configurado como una columna coloca los elementos flexibles en una pila vertical de arriba a abajo. Para cada uno, 
+la dirección en la que se organizan los elementos flexibles se denomina eje principal. Para una fila, esta es una línea horizontal que 
+atraviesa cada elemento. Y para una columna, el eje principal es una línea vertical a través de los elementos.
+
+Hay varias opciones sobre cómo espaciar los elementos flexibles a lo largo de la línea que es el eje principal. 
+Uno de los más utilizados es justificar-contenido: centro;, que alinea todos los elementos flexibles al centro dentro del contenedor flexible.
+Otras opciones incluyen:
+
+-flex-start: alinea los elementos al inicio del contenedor flexible. Para una fila, esto empuja los elementos a la izquierda del contenedor. 
+Para una columna, esto empuja los elementos a la parte superior del contenedor. Esta es la alineación predeterminada si no se especifica 
+el justify-content.
+
+-flex-end: alinea los elementos al final del contenedor flexible. Para una fila, esto empuja los artículos a la derecha del contenedor. 
+Para una columna, esto empuja los artículos al fondo del contenedor.
+
+-space-between: alinea los elementos en el centro del eje principal, con espacio adicional colocado entre los elementos. 
+El primer y el último elemento se empujan hasta el borde del contenedor flexible. Por ejemplo, en una fila, el primer elemento 
+está contra el lado izquierdo del contenedor, el último elemento está contra el lado derecho del contenedor, luego el espacio 
+restante se distribuye uniformemente entre los demás elementos.
+
+-space-around: similar al espacio intermedio pero el primer y el último elemento no están bloqueados en los bordes del contenedor, 
+el espacio se distribuye alrededor de todos los elementos con medio espacio en cada extremo del contenedor flexible.
+
+-space-evenly: distribuye el espacio uniformemente entre los elementos flexibles con un espacio completo en cada extremo 
+del contenedor flexible.
+
+An example helps show this property in action. Add the CSS property justify-content to the #box-container element, and give it a value of center
+<style>
+  #box-container {
+    background: gray;
+    display: flex;
+    height: 500px;
+    justify-content:center;
+  }
+  #box-1 {
+    background-color: dodgerblue;
+    width: 25%;
+    height: 100%;
+  }
+  #box-2 {
+    background-color: orangered;
+    width: 25%;
+    height: 100%;
+  }
+</style>
+<div id="box-container">
+  <div id="box-1"></div>
+  <div id="box-2"></div>
+</div>-->
+
+
+<!-- Use la propiedad de justificar el contenido en el Tweet incrustado
+El último desafío mostró un ejemplo de la propiedad justificar contenido. Para la inserción de tweet, esta propiedad 
+se puede aplicar para alinear los elementos en el elemento .profile-name. 
+
+Agregue la propiedad CSS justificar-contenido al elemento .profile-name del encabezado y establezca el valor en 
+cualquiera de las opciones del último desafío.
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  header, footer {
+    display: flex;
+    flex-direction: row;
+  }
+  header .profile-thumbnail {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+  }
+  header .profile-name {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    margin-left: 10px;
+  }
+</style>-->
+
+
+<!-- Alinear elementos usando la propiedad align-items
+La propiedad de elementos de alineación es similar a la de justificar el contenido. Recuerde que la propiedad de justificar el 
+contenido alineó los elementos flexibles a lo largo del eje principal. Para las filas, el eje principal es una línea horizontal y 
+para las columnas es una línea vertical.
+
+Los contenedores flexibles también tienen un eje transversal que es el opuesto del eje principal. Para las filas, el eje transversal 
+es vertical y para las columnas, el eje transversal es horizontal.
+
+CSS ofrece la propiedad align-items para alinear elementos flexibles a lo largo del eje transversal. Para una fila, 
+le dice a CSS cómo empujar los elementos de toda la fila hacia arriba o hacia abajo dentro del contenedor. Y para una columna, 
+cómo empujar todos los elementos hacia la izquierda o hacia la derecha dentro del contenedor.
+
+Los diferentes valores disponibles para elementos de alineación incluyen:
+-flex-start: alinea los elementos al inicio del contenedor flexible. Para las filas, esto alinea los elementos en la parte
+superior del contenedor. Para las columnas, esto alinea los elementos a la izquierda del contenedor.
+
+-flex-end: alinea los elementos al final del contenedor flexible. Para las filas, esto alinea los elementos con la parte inferior 
+del contenedor. Para las columnas, esto alinea los elementos a la derecha del contenedor.
+
+-center: alinea los elementos al centro. Para las filas, esto alinea los elementos verticalmente (el mismo espacio por encima y 
+por debajo de los elementos). Para las columnas, esto las alinea horizontalmente (igual espacio a la izquierda y a la derecha de los elementos).
+
+-stretch: estirar(stretch) los artículos para llenar el contenedor flexible. Por ejemplo, los elementos de las filas se estiran 
+para llenar el contenedor flexible de arriba a abajo. Este es el valor predeterminado si no se especifica ningún valor 
+de elementos de alineación.
+
+-baseline(linea base): alinea los elementos con sus líneas base. La línea de base es un concepto de texto, considérelo 
+como la línea en la que se asientan las letras.
+
+Un ejemplo ayuda a mostrar esta propiedad en acción. Agregue la propiedad CSS align-items al elemento #box-container y 
+asígnele un valor de centro.
+<style>
+  #box-container {
+    background: gray;
+    display: flex;
+    height: 500px;
+    align-items:center;
+  }
+  #box-1 {
+    background-color: dodgerblue;
+    width: 200px;
+    font-size: 24px;
+  }
+  #box-2 {
+    background-color: orangered;
+    width: 200px;
+    font-size: 18px;
+  }
+</style>
+<div id="box-container">
+  <div id="box-1"><p>Hello</p></div>
+  <div id="box-2"><p>Goodbye</p></div>
+</div>-->
+
+
+<!-- Use la propiedad align-items en el Tweet incrustado 
+El último desafío introdujo la propiedad align-items y dio un ejemplo. Esta propiedad se puede aplicar a algunos elementos 
+de incrustación de tweets para alinear los elementos flexibles dentro de ellos.
+
+Agregue la propiedad CSS align-items al elemento .follow-btn del header. Establezca el valor en el centro.
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  header, footer {
+    display: flex;
+    flex-direction: row;
+  }
+  header .profile-thumbnail {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+  }
+  header .profile-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+  }
+  header .follow-btn {
+    display: flex;
+    align-items:center;
+    margin: 0 0 0 auto;
+  }
+</style>-->
+
+
+<!-- Use la propiedad flex-wrap para ajustar una fila o columna
+CSS flexbox tiene una función para dividir un contenedor flexible en varias filas (o columnas). De forma predeterminada, 
+un contenedor flexible encajará todos los elementos flexibles juntos. Por ejemplo, una fila estará en una sola línea.
+
+Sin embargo, el uso de la propiedad flex-wrap le dice a CSS que envuelva los elementos. Esto significa que los elementos
+adicionales se mueven a una nueva fila o columna. El punto de ruptura donde ocurre el envoltorio depende del tamaño de los 
+artículos y del tamaño del contenedor.
+
+
+CSS también tiene opciones para la dirección de la envoltura:
+- nowrap: esta es la configuración predeterminada y no envuelve elementos.
+- wrap: ajusta los elementos en varias líneas de arriba a abajo si están en filas y de izquierda a derecha si están en columnas.
+- wrap-reverse: envuelve elementos en varias líneas de abajo hacia arriba si están en filas y de derecha a izquierda si están en columnas.
+
+El diseño actual tiene demasiados cuadros para una fila. Agregue la propiedad CSS flex-wrap al elemento #box-container 
+y asígnele un valor de wrap.
+<style>
+  #box-container {
+    background: gray;
+    display: flex;
+    height: 100%;
+    flex-wrap:wrap;
+  }
+  #box-1 {
+    background-color: dodgerblue;
+    width: 25%;
+    height: 50%;
+  }
+  #box-2 {
+    background-color: orangered;
+    width: 25%;
+    height: 50%;
+  }
+  #box-3 {
+    background-color: violet;
+    width: 25%;
+    height: 50%;
+  }
+  #box-4 {
+    background-color: yellow;
+    width: 25%;
+    height: 50%;
+  }
+  #box-5 {
+    background-color: green;
+    width: 25%;
+    height: 50%;
+  }
+  #box-6 {
+    background-color: black;
+    width: 25%;
+    height: 50%;
+  }
+</style>
+<div id="box-container">
+  <div id="box-1"></div>
+  <div id="box-2"></div>
+  <div id="box-3"></div>
+  <div id="box-4"></div>
+  <div id="box-5"></div>
+  <div id="box-6"></div>
+</div>-->
+
+
+<!-- Utilice la propiedad flex-shrink para reducir elementos 
+Hasta ahora, todas las propiedades de los desafíos se aplican al contenedor flexible (el padre de los elementos flexibles). 
+Sin embargo, existen varias propiedades útiles para los elementos flexibles.
+
+La primera es la propiedad de flex-shrink(contracción por flexión). Cuando se usa, permite que un artículo se encoja si el contenedor 
+flexible es demasiado pequeño. Los elementos se encogen cuando el ancho del contenedor principal es más pequeño que los anchos 
+combinados de todos los elementos flexibles que contiene.
+
+La propiedad flex-shrink toma números como valores. Cuanto mayor sea el número, más se encogerá en comparación con los 
+demás elementos del contenedor. Por ejemplo, si un artículo tiene un valor de flex-shrink de 1 y el otro tiene un 
+valor de flex-shrink de 3, el que tiene el valor de 3 se encogerá tres veces más que el otro.
+
+Agregue la propiedad CSS flex-shrink tanto a #box-1 como a #box-2. Asigne a #box-1 un valor de 1 y a #box-2 un valor de 2.
+<style>
+  #box-container {
+    display: flex;
+    height: 500px;
+  }
+  #box-1 {
+    background-color: dodgerblue;
+    width: 100%;
+    height: 200px;
+    flex-shrink:1;
+  }
+
+  #box-2 {
+    background-color: orangered;
+    width: 100%;
+    height: 200px;
+    flex-shrink:2;
+  }
+</style>
+<div id="box-container">
+  <div id="box-1"></div>
+  <div id="box-2"></div>
+</div>-->
+
+
+<!-- Use la propiedad flex-grow para expandir elementos
+Lo opuesto a la contracción flexible es la propiedad de crecimiento flexible. Recuerde que flex-shrink controla el tamaño de 
+los artículos cuando el contenedor se encoge. La propiedad flex-grow controla el tamaño de los elementos cuando se expande el 
+contenedor principal.
+
+Usando un ejemplo similar del último desafío, si un elemento tiene un valor de crecimiento flexible de 1 y el otro tiene un 
+valor de crecimiento flexible de 3, el que tiene el valor de 3 crecerá tres veces más que el otro. 
+
+Agregue la propiedad CSS flex-grow tanto a #box-1 como a #box-2. Asigne a #box-1 un valor de 1 y a #box-2 un valor de 2.
+<style>
+  #box-container {
+    display: flex;
+    height: 500px;
+  }
+  #box-1 {
+    background-color: dodgerblue;
+    height: 200px;
+    flex-grow:1;
+  }
+  #box-2 {
+    background-color: orangered;
+    height: 200px;
+    flex-grow:2;
+  }
+</style>
+<div id="box-container">
+  <div id="box-1"></div>
+  <div id="box-2"></div>
+</div>-->
+
+
+<!-- Utilice la propiedad de base flexible para establecer el tamaño inicial de un elemento
+La propiedad flex-basis especifica el tamaño inicial del elemento antes de que CSS realice ajustes con flex-shrink o flex-grow.
+
+Las unidades utilizadas por la propiedad de base flexible son las mismas que otras propiedades de tamaño (px, em, %, etc.).
+El valor cambia automáticamente el tamaño de los elementos en función del contenido. 
+<style>
+  #box-container {
+    display: flex;
+    height: 500px;
+  }
+  #box-1 {
+    background-color: dodgerblue;
+    height: 200px;
+    flex-basis:10em;
+  }
+  #box-2 {
+    background-color: orangered;
+    height: 200px;
+    flex-basis:20em;
+  }
+</style>
+<div id="box-container">
+  <div id="box-1"></div>
+  <div id="box-2"></div>
+</div>-->
+
+
+<!-- Usar la propiedad abreviada flex
+Hay un atajo disponible para configurar varias propiedades flexibles a la vez. Las propiedades flex-grow, flex-shrink y flex-basis 
+se pueden configurar juntas usando la propiedad flex.
+
+Por ejemplo, flex: 1 0 10px; configurará el elemento para flex-grow: 1;, flex-shrink: 0; y flex-basis: 10px;. 
+
+La configuración de propiedad predeterminada es flex: 0 1 auto;.
+Agregue la propiedad CSS flex tanto a #box-1 como a #box-2. Dale a #box-1 los valores para que su flex-grow sea 2, 
+su flex-shrink  sea 2 y su flex-basis sea 150px. Dale a #box-2 los valores para que su flex-grow sea 1, 
+su flex-shrink sea 1 y su flex-basis sea 150px.
+
+-Estos valores harán que #box-1 crezca para llenar el espacio extra al doble de la tasa de #box-2 cuando el contenedor tenga más 
+de 300 px y se reducirá al doble de la tasa de #box-2 cuando el contenedor tenga menos de 300 px. 300px es el tamaño combinado 
+de los valores de base flexible de los dos cuadros.
+<style>
+  #box-container {
+    display: flex;
+    height: 500px;
+  }
+  #box-1 {
+    background-color: dodgerblue;
+    flex:2 2 150px;
+    height: 200px;
+  }
+  #box-2 {
+    background-color: orangered;
+    flex:1 1 150px;
+    height: 200px;
+  }
+</style>
+<div id="box-container">
+  <div id="box-1"></div>
+  <div id="box-2"></div>
+</div>-->
+
+
+<!-- Use la propiedad order para reorganizar elementos
+La propiedad order se usa para decirle a CSS el orden en que aparecen los elementos flexibles en el contenedor flexible. 
+De forma predeterminada, los elementos aparecerán en el mismo orden en que aparecen en el HTML de origen. La propiedad 
+toma números como valores y se pueden usar números negativos. 
+
+
+Agregue el orden de las propiedades CSS tanto a #box-1 como a #box-2. Dale a #box-1 un valor de 2 y a #box-2 un valor de 1.
+<style>
+  #box-container {
+    display: flex;
+    height: 500px;
+  }
+  #box-1 {
+    background-color: dodgerblue;
+    order:2;
+    height: 200px;
+    width: 200px;
+  }
+  #box-2 {
+    background-color: orangered;
+    order:1;
+    height: 200px;
+    width: 200px;
+  }
+</style>
+<div id="box-container">
+  <div id="box-1"></div>
+  <div id="box-2"></div>
+</div>-->
+
+
+<!-- Utilice la propiedad align-self 
+La propiedad final de los elementos flexibles es align-self. Esta propiedad le permite ajustar la alineación de cada elemento 
+individualmente, en lugar de configurarlos todos a la vez. Esto es útil ya que otras técnicas de ajuste comunes que utilizan 
+las propiedades CSS float, clear y vertical-align no funcionan en elementos flexibles.
+
+align-self acepta los mismos valores que align-items y anulará cualquier valor establecido por la propiedad align-items.
+
+Agregue la propiedad CSS align-self tanto a #box-1 como a #box-2. Asigne a #box-1 un valor de centro y asigne a #box-2 un valor de flex-end.
+<style>
+  #box-container {
+    display: flex;
+    height: 500px;
+  }
+  #box-1 {
+    background-color: dodgerblue;
+    align-self:center;
+    height: 200px;
+    width: 200px;
+  }
+  #box-2 {
+    background-color: orangered;
+    align-self:flex-end;
+    height: 200px;
+    width: 200px;
+  }
+</style>
+<div id="box-container">
+  <div id="box-1"></div>
+  <div id="box-2"></div>
+</div>-->
+
+
+<!-- Crea tu primera CSS Grid
+Convierte cualquier elemento HTML en una cuadrícula al establecer la propiedad display a grid. Esto te da la habilidad de usar 
+todas las demás propiedades asociadas con CSS Grid.
+
+Nota: en CSS Grid, el elemento padre se refiere como el contenedor y sus hijos se llaman elementos.
+
+Cambia la propiedad display del div que tiene la clase container a grid. 
+<style>
+  .d1{background:LightSkyBlue;}
+  .d2{background:LightSalmon;}
+  .d3{background:PaleTurquoise;}
+  .d4{background:LightPink;}
+  .d5{background:PaleGreen;}
+  .container {
+    font-size: 40px;
+    width: 100%;
+    background: LightGray;
+    /* Cambia solo el código debajo de esta línea */
+    display:grid;
+    /* Cambia solo el código encima de esta línea */
+  }
+</style>
+<div class="container">
+  <div class="d1">1</div>
+  <div class="d2">2</div>
+  <div class="d3">3</div>
+  <div class="d4">4</div>
+  <div class="d5">5</div>
+</div>-->
+
+
+<!-- Agrega columnas con grid-template-columns
+Crear un simple elemento cuadrícula (grid) no te llevará muy lejos. Necesitas también definir su estructura. 
+Para agregar columnas a la cuadrícula, usa la propiedad grid-template-columns en el contenedor de la cuadrícula como 
+se demuestra a continuación:
+.container {
+  display: grid;
+  grid-template-columns: 50px 50px;
+}
+Esto le dará a tu cuadrícula dos columnas que tienen 50px de ancho cada una. El número de parámetros que se le da a la propiedad 
+grid-template-columns indica el número de columnas en la cuadrícula y el valor de cada parámetro indica el ancho de cada columna.
+
+Haz que el contenedor de la cuadrícula tenga tres columnas con un ancho de 100px cada una.
+<style>
+  .d1{background:LightSkyBlue;}
+  .d2{background:LightSalmon;}
+  .d3{background:PaleTurquoise;}
+  .d4{background:LightPink;}
+  .d5{background:PaleGreen;}
+  .container {
+    font-size: 40px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    /* Cambia solo el código debajo de esta línea */
+    grid-template-columns: 100px 100px 100px;
+    /* Cambia solo el código encima de esta línea */
+  }
+</style>
+<div class="container">
+  <div class="d1">1</div>
+  <div class="d2">2</div>
+  <div class="d3">3</div>
+  <div class="d4">4</div>
+  <div class="d5">5</div>
+</div>-->
+
+
+<!-- Agrega filas con grid-template-rows
+La cuadrícula (grid) que creaste en el último desafío establecerá el número de filas automáticamente. Para ajustar las 
+filas manualmente, usa la propiedad grid-template-rows de la misma manera en la que usaste grid-template-columns en el desafío anterior.
+
+Agrega dos filas a la cuadrícula que tengan 50px de alto cada una.
+
+<style>
+  .d1{background:LightSkyBlue;}
+  .d2{background:LightSalmon;}
+  .d3{background:PaleTurquoise;}
+  .d4{background:LightPink;}
+  .d5{background:PaleGreen;}
+  .container {
+    font-size: 40px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    /* Cambia solo el código debajo de esta línea */
+    grid-template-rows:50px 50px;
+    /* Cambia solo el código encima de esta línea */
+  }
+</style>
+<div class="container">
+  <div class="d1">1</div>
+  <div class="d2">2</div>
+  <div class="d3">3</div>
+  <div class="d4">4</div>
+  <div class="d5">5</div>
+</div>-->
+
+
+<!-- Usa unidades CSS Grid para cambiar el tamaño de las columnas y filas
+Puedes usar unidades absolutas y relativas como px y em en CSS Grid para definir el tamaño de filas y columnas. Puedes usar estas también:
+
+1- fr: fija la columna o fila a una fracción del espacio disponible,
+2- auto: fija la columna o fila al ancho o alto de su contenido automáticamente.
+3- %: ajusta la columna o fila al porcentaje de ancho de su contenedor.
+
+A continuación el código que genera el resultado de la vista previa:
+grid-template-columns: auto 50px 10% 2fr 1fr;
+Esta línea de código genera cinco columnas. La primera columna es tan ancha como su contenido, la segunda tiene 50px de ancho, 
+la tercera es el 10% de su contenedor y para las últimas dos columnas; el espacio restante es dividido en tres secciones: 
+dos son asignadas a la cuarta columna y una a la quinta columna.
+
+Haz una cuadrícula con tres columnas que tengan las siguientes dimensiones de ancho: 1fr, 100px y 2fr.
+<style>
+  .d1{background:LightSkyBlue;}
+  .d2{background:LightSalmon;}
+  .d3{background:PaleTurquoise;}
+  .d4{background:LightPink;}
+  .d5{background:PaleGreen;}
+  .container {
+    font-size: 40px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    /* Cambia solo el código debajo de esta línea */
+    grid-template-columns: 1fr 100px 2fr;
+    /* Cambia solo el código encima de esta línea */
+    grid-template-rows: 50px 50px;
+  }
+</style>
+<div class="container">
+  <div class="d1">1</div>
+  <div class="d2">2</div>
+  <div class="d3">3</div>
+  <div class="d4">4</div>
+  <div class="d5">5</div>
+</div>-->
+
+
+<!-- Crea un espacio entre columnas usando grid-column-gap
+Hasta ahora en las grids que has creado, las columnas han estado todas juntas. Algunas veces querrás un espacio entre las columnas. 
+Para agregar un espacio entre las columnas, usa la propiedadgrid-column-gap de la siguiente manera: 
+grid-column-gap: 10px;
+Esto crea espacios vacíos de 10px entre todas las columnas.
+
+Haz que las columnas en la cuadrícula (grid) tengan 20px de espacio.
+<style>
+  .d1{background:LightSkyBlue;}
+  .d2{background:LightSalmon;}
+  .d3{background:PaleTurquoise;}
+  .d4{background:LightPink;}
+  .d5{background:PaleGreen;}
+  .container {
+    font-size: 40px;
+    min-height: 300px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    /* Cambia solo el código debajo de esta línea */
+    grid-column-gap:20px;
+    /* Cambia solo el código encima de esta línea */
+  }
+</style>
+<div class="container">
+  <div class="d1">1</div>
+  <div class="d2">2</div>
+  <div class="d3">3</div>
+  <div class="d4">4</div>
+  <div class="d5">5</div>
+</div>-->
+
+
+<!-- Crea un espacio entre filas usando grid-row-gap
+Puedes agregar un espacio entre las filas usando grid-row-gap de la misma manera en la que agregaste un espacio 
+entre las columnas en el desafío anterior. 
+
+Crea un espacio para las filas que tenga 5px de alto.
+<style>
+  .d1{background:LightSkyBlue;}
+  .d2{background:LightSalmon;}
+  .d3{background:PaleTurquoise;}
+  .d4{background:LightPink;}
+  .d5{background:PaleGreen;}
+  .container {
+    font-size: 40px;
+    min-height: 300px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    /* Cambia solo el código debajo de esta línea */
+    grid-row-gap:20px;
+    /* Cambia solo el código encima de esta línea */
+  }
+</style>
+<div class="container">
+  <div class="d1">1</div>
+  <div class="d2">2</div>
+  <div class="d3">3</div>
+  <div class="d4">4</div>
+  <div class="d5">5</div>
+</div>-->
+
+
+<!-- Agrega espacios más rápido con grid-gap
+grid-gap es una propiedad abreviada para grid-row-gap y grid-column-gap de los dos desafíos anteriores que es más conveniente usar. 
+Si grid-gap tiene un valor, creará un espacio entre todas las filas y columnas. Sin embargo, si hay dos valores, usará el primero 
+de estos para poner los espacios entre las filas y el segundo para los espacios entre las columnas.
+
+Usa grid-gap para introducir un espacio de 10px entre las filas y un espacio de 20px entre las columnas.
+<style>
+  .d1{background:LightSkyBlue;}
+  .d2{background:LightSalmon;}
+  .d3{background:PaleTurquoise;}
+  .d4{background:LightPink;}
+  .d5{background:PaleGreen;}
+  .container {
+    font-size: 40px;
+    min-height: 300px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    /* Cambia solo el código debajo de esta línea */
+    grid-gap:10px 20px;
+    /* Cambia solo el código encima de esta línea */
+  }
+</style>
+<div class="container">
+  <div class="d1">1</div>
+  <div class="d2">2</div>
+  <div class="d3">3</div>
+  <div class="d4">4</div>
+  <div class="d5">5</div>
+</div>-->
+
+
+<!-- Usa grid-column para controlar espaciado
+Hasta este punto, todas las propiedades que hemos discutido son para los contenedores de cuadrícula (grid). 
+La propiedad grid-column es la primera que usaremos para los propios elementos de la cuadrícula.
+
+Las líneas horizontales y verticales hipotéticas que crean la cuadrícula son referidas como líneas. 
+Estas líneas son enumeradas empezando con el 1 desde la esquina superior izquierda de la cuadrícula y 
+se desplaza hacia la derecha para las columnas y hacia abajo para las filas, contando hacia arriba. 
+
+Para controlar la cantidad de columnas que un elemento tendrá, puedes usar la propiedad grid-column en conjunto con el 
+número de las líneas en las que quieres que empiece y termine.
+Aquí un ejemplo:
+grid-column: 1 / 3;
+Esto hará que el elemento empiece en la primera línea vertical de la cuadrícula a la izquierda y se extienda a 
+la 3ra línea de la cuadrícula, ocupando dos columnas.
+
+Haz que el elemento con clase item5 ocupe las dos últimas columnas de la cuadrícula.
+<style>
+  .item1{background:LightSkyBlue;}
+  .item2{background:LightSalmon;}
+  .item3{background:PaleTurquoise;}
+  .item4{background:LightPink;}
+  .item5 {
+    background: PaleGreen;
+    /* Cambia solo el código debajo de esta línea */
+    grid-column:2/4;
+    /* Cambia solo el código encima de esta línea */
+  }
+  .container {
+    font-size: 40px;
+    min-height: 300px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
+  }
+</style>
+<div class="container">
+  <div class="item1">1</div>
+  <div class="item2">2</div>
+  <div class="item3">3</div>
+  <div class="item4">4</div>
+  <div class="item5">5</div>
+</div>-->
+
+
+<!-- Usa grid-row para controlar espaciado
+Por supuesto, puedes hacer que los elementos ocupen múltiples filas así como se puede hacer con las columnas. 
+Puedes definir las líneas horizontales donde quieres que un elemento empiece y termine usando la propiedad grid-row sobre 
+un elemento de cuadrícula (grid).
+
+Haz que el elemento con clase item5 ocupe las últimas dos filas.
+<style>
+  .item1{background:LightSkyBlue;}
+  .item2{background:LightSalmon;}
+  .item3{background:PaleTurquoise;}
+  .item4{background:LightPink;}
+  .item5 {
+    background: PaleGreen;
+    grid-column: 2 / 4;
+    /* Cambia solo el código debajo de esta línea */
+    grid-row:2/4
+    /* Cambia solo el código encima de esta línea */
+  }
+  .container {
+    font-size: 40px;
+    min-height: 300px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
+  }
+</style>
+<div class="container">
+  <div class="item1">1</div>
+  <div class="item2">2</div>
+  <div class="item3">3</div>
+  <div class="item4">4</div>
+  <div class="item5">5</div>
+</div>-->
+
+
+<!-- Alinea un elemento horizontalmente usando justify-self
+En CSS Grid, el contenido de cada elemento está ubicado en una caja, la cual se refiere como celda. Puedes alinear la 
+posición del contenido dentro de la celda horizontalmente usando la propiedad justify-self en un elemento grid. Por defecto, 
+esta propiedad tiene valor de stretch, lo que hace que el contenido cubra todo el ancho de la celda. Esta propiedad de CSS 
+Grid acepta otros valores también:
+1- start: alinea el contenido hacia la izquierda de la celda,
+2- center: alinea el contenido en el centro de la celda,
+3- end: alinea el contenido hacia la derecha de la celda.
+
+Usa la propiedad justify-self para centrar el elemento con la clase item2.
+<style>
+  .item1{background: LightSkyBlue;}
+  .item2 {
+    background: LightSalmon;
+    /* Cambia solo el código debajo de esta línea */
+    justify-self:center;
+    /* Cambia solo el código encima de esta línea */
+  }
+  .item3{background:PaleTurquoise;}
+  .item4{background:LightPink;}
+  .item5{background:PaleGreen;}
+  .container {
+    font-size: 40px;
+    min-height: 300px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
+  }
+</style>
+<div class="container">
+  <div class="item1">1</div>
+  <div class="item2">2</div>
+  <div class="item3">3</div>
+  <div class="item4">4</div>
+  <div class="item5">5</div>
+</div>-->
+
+
+<!-- Alinea un elemento verticalmente usando align-self
+Así como puedes alinear un elemento horizontalmente, hay una manera de alinearlo verticalmente también. Para hacer esto, 
+usa la propiedad align-self sobre un elemento. Esta propiedad acepta los mismos valores que justify-self del desafío anterior.
+
+Alinea verticalmente el elemento con clase item3 hacia el final end.
+<style>
+  .item1{background:LightSkyBlue;}
+  .item2{background:LightSalmon;}
+  .item3 {
+    background: PaleTurquoise;
+    /* Cambia solo el código debajo de esta línea */
+    align-self:end;
+    /* Cambia solo el código encima de esta línea */
+  }
+  .item4{background:LightPink;}
+  .item5{background:PaleGreen;}
+  .container {
+    font-size: 40px;
+    min-height: 300px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
+  }
+</style>
+<div class="container">
+  <div class="item1">1</div>
+  <div class="item2">2</div>
+  <div class="item3">3</div>
+  <div class="item4">4</div>
+  <div class="item5">5</div>
+</div>-->
+
+
+<!-- Alinea todos los elementos horizontalmente usando justify-items
+Algunas veces querrás que todos los elementos en tu CSS Grid compartan el mismo alineamiento. Puedes usar las 
+propiedades aprendidas anteriormente y alinearlos individualmente, o puedes alinear todos a la vez horizontalmente usando 
+justify-items en el contenedor de tu grid. Esta propiedad acepta los mismos valores aprendidos en los dos desafíos previos, 
+siendo la única diferencia que moverá all los elementos de la grid hacia el alineamiento deseado.
+
+Usa esta propiedad para centrar todos los elementos horizontalmente.
+<style>
+  .item1{background:LightSkyBlue;}
+  .item2{background:LightSalmon;}
+  .item3{background:PaleTurquoise;}
+  .item4{background:LightPink;}
+  .item5{background:PaleGreen;}
+  .container {
+    font-size: 40px;
+    min-height: 300px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    /* Cambia solo el código debajo de esta línea */
+    justify-items:center;
+    /* Cambia solo el código encima de esta línea */
+  }
+</style>
+<div class="container">
+  <div class="item1">1</div>
+  <div class="item2">2</div>
+  <div class="item3">3</div>
+  <div class="item4">4</div>
+  <div class="item5">5</div>
+</div>-->
+
+
+<!-- Alinea todos los elementos verticalmente usando align-items
+Usar la propiedad align-items en el contenedor de una grid establecerá el alineamiento vertical de todos los elementos de la grid.
+
+Úsala ahora para mover todos los elementos hacia el final de cada celda.
+<style>
+  .item1{background:LightSkyBlue;}
+  .item2{background:LightSalmon;}
+  .item3{background:PaleTurquoise;}
+  .item4{background:LightPink;}
+  .item5{background:PaleGreen;}
+  .container {
+    font-size: 40px;
+    min-height: 300px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    /* Cambia solo el código debajo de esta línea */
+    align-items:end;
+    /* Cambia solo el código encima de esta línea */
+  }
+</style>
+<div class="container">
+  <div class="item1">1</div>
+  <div class="item2">2</div>
+  <div class="item3">3</div>
+  <div class="item4">4</div>
+  <div class="item5">5</div>
+</div>-->
+
+
+<!-- Divide la cuadrícula en una plantilla de área
+Puedes agrupar las celdas de tu cuadrícula en una área y darle a esa área un nombre personalizado. Haz esto usando 
+grid-template-areas en el contenedor de la siguiente manera:
+grid-template-areas:
+  "header header header"
+  "advert content content"
+  "advert footer footer";
+El código anterior agrupa las celdas de la cuadrícula en cuatro áreas; header, advert, contenty footer. 
+Cada palabra representa una celda y cada par de comillas representa una fila.
+
+Cambia la plantilla para que el área de footer abarque toda la fila de abajo. La definición de las
+áreas no tendrá ningún efecto visual en este momento. Después, usarás un elemento para ver cómo funciona.
+<style>
+  .item1{background:LightSkyBlue;}
+  .item2{background:LightSalmon;}
+  .item3{background:PaleTurquoise;}
+  .item4{background:LightPink;}
+  .item5{background:PaleGreen;}
+  .container {
+    font-size: 40px;
+    min-height: 300px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    grid-template-areas:
+      "header header header"
+      "advert content content"
+      "footer footer footer";
+  }
+</style>
+<div class="container">
+  <div class="item1">1</div>
+  <div class="item2">2</div>
+  <div class="item3">3</div>
+  <div class="item4">4</div>
+  <div class="item5">5</div>
+</div>-->
+
+
+<!-- Ubica elementos en áreas de cuadrícula usando la propiedad grid-area
+Después de crear una plantilla de área para tu contenedor de cuadrícula (grid), cómo se muestra en el desafío anterior, 
+puedes ubicar un elemento en tu área personalizada referenciando el nombre que le diste. Para hacer esto, usa la propiedad grid-area 
+sobre un elemento así:
+.item1 {
+  grid-area: header;
+}
+Esto le dice a la cuadrícula que quieres que la clase item1 se ubique en el área llamada header. En este caso, el item usará 
+la totalidad de la fila superior debido a que esa área es nombrada como el área header.
+
+Ubica un elemento con clase item5 en el área footer usando la propiedad grid-area.
+<style>
+  .item1{background:LightSkyBlue;}
+  .item2{background:LightSalmon;}
+  .item3{background:PaleTurquoise;}
+  .item4{background:LightPink;}
+  .item5 {
+    background: PaleGreen;
+    grid-area:footer;
+  }
+  .container {
+    font-size: 40px;
+    min-height: 300px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    grid-template-areas:
+      "header header header"
+      "advert content content"
+      "footer footer footer";
+  }
+</style>
+<div class="container">
+  <div class="item1">1</div>
+  <div class="item2">2</div>
+  <div class="item3">3</div>
+  <div class="item4">4</div>
+  <div class="item5">5</div>
+</div>-->
+
+
+<!-- Usa grid-area sin crear plantillas de área
+La propiedad grid-area que aprendiste en el último desafío puede ser usada de otra manera. Si tu cuadrícula (grid) 
+no tiene plantillas de área de referencia, puedes crear un área para un elemento sobre la marcha para ubicar los elementos 
+de la siguiente manera:
+
+item1 { grid-area: 1/1/2/4; }
+Esto usa los números de líneas aprendidos anteriormente para definir cuál será el área de ese elemento. Los números en el ejemplo anterior representan estos valores:
+
+grid-area: horizontal line to start at / vertical line to start at / horizontal line to end at / vertical line to end at;
+Entonces, el elemento en el ejemplo ocupará las filas entre las líneas 1 y 2, y las columnas entre las líneas 1 y 4.
+
+Usa la propiedad grid-area para ubicar el elemento con clase item5 entre la tercera y cuarta línea horizontal y entre la primera y 
+cuarta línea vertical.
+<style>
+  .item1{background:LightSkyBlue;}
+  .item2{background:LightSalmon;}
+  .item3{background:PaleTurquoise;}
+  .item4{background:LightPink;}
+  .item5 {
+    background: PaleGreen;
+    grid-area:3/1/4/4;
+  }
+  .container {
+    font-size: 40px;
+    min-height: 300px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
+  }
+</style>
+<div class="container">
+  <div class="item1">1</div>
+  <div class="item2">2</div>
+  <div class="item3">3</div>
+  <div class="item4">4</div>
+  <div class="item5">5</div>
+</div>-->
+
+
+<!-- Reduce repeticiones usando la función repeat
+Cuando usaste grid-template-columns y grid-template-rows para definir la estructura de una cuadrícula (grid), ingresaste un 
+valor para cada fila o columna que creaste.
+
+Digamos que quieres una cuadrícula con 100 filas del mismo tamaño. No es muy práctico insertar 100 valores manualmente. 
+Afortunadamente, hay una mejor manera - usando la función repeat para especificar el número de veces que quieres que tu columna o 
+fila se repita, seguido de una coma y el valor que quieres repetir.
+
+A continuación un ejemplo que crea una cuadrícula de 100 filas, cada fila con 50px de alto.
+grid-template-rows: repeat(100, 50px);
+
+También puedes repetir múltiples valores con la función repeat e insertar la función entre otros valores al definir una 
+estructura de cuadrícula. Así se ve:
+grid-template-columns: repeat(2, 1fr 50px) 20px;
+
+Esto traduce a:
+grid-template-columns: 1fr 50px 1fr 50px 20px;
+Nota: el 1fr 50px es repetido dos veces, seguido de 20px.
+
+La clase container debe tener una propiedad grid-template-columns que repita 3 columnas con ancho de 1fr.
+<style>
+  .item1{background:LightSkyBlue;}
+  .item2{background:LightSalmon;}
+  .item3{background:PaleTurquoise;}
+  .item4{background:LightPink;}
+  .item5{background:PaleGreen;}
+  .container {
+    font-size: 40px;
+    min-height: 300px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    /* Cambia solo el código debajo de esta línea */
+    grid-template-columns: repeat(3, 1fr);
+    /* Cambia solo el código encima de esta línea */
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
+  }
+</style>
+<div class="container">
+  <div class="item1">1</div>
+  <div class="item2">2</div>
+  <div class="item3">3</div>
+  <div class="item4">4</div>
+  <div class="item5">5</div>
+</div>-->
+
+
+<!-- Limita el tamaño del elemento usando la función minmax
+Hay otra función integrada para usar con grid-template-columns y grid-template-rows llamada minmax. Se usa para limitar el 
+tamaño de los elementos cuando el contenedor de la cuadrícula (grid) cambia de tamaño. Para hacer esto, necesitas especificar 
+el rango de tamaño aceptable para tu elemento. A continuación un ejemplo:
+
+grid-template-columns: 100px minmax(50px, 200px);
+En el código anterior, grid-template-columns se configuró para crear dos columnas; la primera tiene 100px de ancho y 
+la segunda tiene un ancho mínimo de 50px y máximo de 200px.
+
+La clase container debe tener una propiedad grid-template-columns que repita 3 columnas con un mínimo de ancho de 90px y máximo de 1fr.
+<style>
+  .item1{background:LightSkyBlue;}
+  .item2{background:LightSalmon;}
+  .item3{background:PaleTurquoise;}
+  .item4{background:LightPink;}
+  .item5{background:PaleGreen;}
+  .container {
+    font-size: 40px;
+    min-height: 300px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    /* Cambia solo el código debajo de esta línea */
+    grid-template-columns: repeat(3, minmax(90px, 1fr)) ;
+    /* Cambia solo el código encima de esta línea */
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
+  }
+</style>
+<div class="container">
+  <div class="item1">1</div>
+  <div class="item2">2</div>
+  <div class="item3">3</div>
+  <div class="item4">4</div>
+  <div class="item5">5</div>
+</div>-->
+
+
+<!-- Crea diseños flexibles usando auto-fill
+La función de repetición viene con una opción llamada auto-fill. Esto te permite insertar automáticamente tantas filas o 
+columnas del tamaño deseado como sea posible, dependiendo del tamaño del contenedor. Puedes crear diseños flexibles al combinar 
+auto-fill con minmax, así:
+repeat(auto-fill, minmax(60px, 1fr));
+
+Cuando el tamaño del contenedor cambia, esta configuración sigue insertando columnas de 60px y estirándolas hasta que pueda insertar otra. 
+Nota: Si a tu contenedor no le caben todos los elementos en una fila, los moverá hacia abajo a una nueva fila.
+
+En la primera cuadrícula (grid), usa auto-fill con repeat para rellenar la cuadrícula con columnas que tengan un ancho mínimo de 60px 
+y máximo de 1fr. Luego, cambia el tamaño de la vista previa para ver auto-fill en acción.
+<style>
+  .item1{background:LightSkyBlue;}
+  .item2{background:LightSalmon;}
+  .item3{background:PaleTurquoise;}
+  .item4{background:LightPink;}
+  .item5{background:PaleGreen;}
+  .container {
+    font-size: 40px;
+    min-height: 100px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    /* Cambia solo el código debajo de esta línea */
+    grid-template-columns: repeat(auto-fill,minmax(60px,1fr));
+    /* Cambia solo el código encima de esta línea */
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
+  }
+  .container2 {
+    font-size: 40px;
+    min-height: 100px;
+    width: 100%;
+    background: Silver;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(60px, 1fr));
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
+  }
+</style>
+<div class="container">
+  <div class="item1">1</div>
+  <div class="item2">2</div>
+  <div class="item3">3</div>
+  <div class="item4">4</div>
+  <div class="item5">5</div>
+</div>
+<div class="container2">
+  <div class="item1">1</div>
+  <div class="item2">2</div>
+  <div class="item3">3</div>
+  <div class="item4">4</div>
+  <div class="item5">5</div>
+</div>-->
+
+
+<!-- Crea diseños flexibles usando auto-fit
+auto-fit funciona casi igual que auto-fill. La única diferencia es que cuando el tamaño del contenedor excede el tamaño de todos sus 
+elementos combinados, auto-fill sigue insertando filas o columnas vacías y empuja los elementos hacia un lado, mientras que auto-fit 
+colapsa esas filas o columnas y estira los elementos para que cubran el tamaño del contenedor.
+
+Nota: si a tu contenedor no le caben todos los elementos en una fila, los moverá hacia abajo a una nueva fila.
+<style>
+  .item1{background:LightSkyBlue;}
+  .item2{background:LightSalmon;}
+  .item3{background:PaleTurquoise;}
+  .item4{background:LightPink;}
+  .item5{background:PaleGreen;}
+  .container {
+    font-size: 40px;
+    min-height: 100px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
+  }
+  .container2 {
+    font-size: 40px;
+    min-height: 100px;
+    width: 100%;
+    background: Silver;
+    display: grid;
+    /* Cambia solo el código debajo de esta línea */
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    /* Cambia solo el código encima de esta línea */
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
+  }
+</style>
+<div class="container">
+  <div class="item1">1</div>
+  <div class="item2">2</div>
+  <div class="item3">3</div>
+  <div class="item4">4</div>
+  <div class="item5">5</div>
+</div>
+<div class="container2">
+  <div class="item1">1</div>
+  <div class="item2">2</div>
+  <div class="item3">3</div>
+  <div class="item4">4</div>
+  <div class="item5">5</div>
+</div>-->
+
+
+<!-- Usa consultas de medios (media queries) para crear diseños responsivos
+CSS Grid puede ser una manera fácil de hacer que tu sitio sea más receptivo al usar consultas de medios (media queries) para 
+reorganizar las áreas de cuadrícula (grid), cambiar sus dimensiones y reorganizar la ubicación de los elementos.
+
+En la vista previa, cuando el ancho del viewport es 300px o más, el número de columnas cambia de 1 a 2. El área de publicidad
+entonces ocupa la columna de la izquierda por completo.
+
+Cuando el ancho del viewport sea 400px o más, haz que el área header ocupe la fila superior por completo y que el área footer 
+ocupe la fila inferior por completo.
+<style>
+  .item1 {
+    background: LightSkyBlue;
+    grid-area: header;
+  }
+  .item2 {
+    background: LightSalmon;
+    grid-area: advert;
+  }
+  .item3 {
+    background: PaleTurquoise;
+    grid-area: content;
+  }
+  .item4 {
+    background: lightpink;
+    grid-area: footer;
+  }
+  .container {
+    font-size: 1.5em;
+    min-height: 300px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px auto 1fr auto;
+    grid-gap: 10px;
+    grid-template-areas:
+      "header"
+      "advert"
+      "content"
+      "footer";
+  }
+  @media (min-width: 300px){
+    .container{
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas:
+        "advert header"
+        "advert content"
+        "advert footer";
+    }
+  }
+  @media (min-width: 400px){
+    .container{
+      grid-template-areas:
+      /* Cambia solo el código debajo de esta línea */
+        "header header"
+        "advert content"
+        "footer footer";
+      /* Cambia solo el código encima de esta línea */
+    }
+  }
+</style>
+<div class="container">
+  <div class="item1">header</div>
+  <div class="item2">advert</div>
+  <div class="item3">content</div>
+  <div class="item4">footer</div>
+</div>-->
+
+
+<!-- Crea cuadrículas (grids) dentro de cuadrículas
+Convertir un elemento a una cuadrícula solo afecta el comportamiento de sus descendientes directos. Entonces, al convertir un 
+descendiente directo a una cuadrícula, obtienes una cuadrícula dentro de una cuadrícula.
+
+Por ejemplo, al establecer las propiedades display and grid-template-columns del elemento con clase item3, creas una cuadrícula 
+dentro de tu cuadrícula.
+
+Convierte el elemento con clase item3 en una cuadrícula con dos columnas de ancho auto y 1fr usando display y grid-template-columns.
+1- La clase item3 debe tener una propiedad grid-template-columns con los valores auto y 1fr.
+2- La clase item3 debe tener una propiedad display con valor grid.
+<style>
+  .container {
+    font-size: 1.5em;
+    min-height: 300px;
+    width: 100%;
+    background: LightGray;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-gap: 10px;
+    grid-template-areas:
+      "advert header"
+      "advert content"
+      "advert footer";
+  }
+  .item1 {
+    background: LightSkyBlue;
+    grid-area: header;
+  }
+  .item2 {
+    background: LightSalmon;
+    grid-area: advert;
+  }
+  .item3 {
+    background: PaleTurquoise;
+    grid-area: content;
+    /* Cambia solo el código debajo de esta línea */
+    display:grid;
+    grid-template-columns:auto 1fr;
+    /* Cambia solo el código encima de esta línea */
+  }
+  .item4 {
+    background: lightpink;
+    grid-area: footer;
+  }
+  .itemOne {
+    background: PaleGreen;
+  }
+  .itemTwo {
+    background: BlanchedAlmond;
+  }
+</style>
+<div class="container">
+  <div class="item1">header</div>
+  <div class="item2">advert</div>
+  <div class="item3">
+    <div class="itemOne">paragraph1</div>
+    <div class="itemTwo">paragraph2</div>
+  </div>
+  <div class="item4">footer</div>
+</div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

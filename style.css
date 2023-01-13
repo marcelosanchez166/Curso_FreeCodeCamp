@@ -1,0 +1,36 @@
+.button {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    padding: 20px 50px;
+    border: 3px solid #3c67e3;
+    border-radius: 10px;
+}
+
+body {
+    background-color: #000;
+}
+
+.button:hover {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        background-color: #5ddcff;
+    }
+
+    /* 100% {
+        background-color: #FF4136;
+    } */
+
+    /* este box-shadow sirve para iluminar el contorno del boton */
+    /* 0% {
+        box-shadow:
+            0 0 25px #5ddcff 
+            0 0 50px #4e00c2;
+    }
+    100% {
+        box-shadow: #FF4136;
+    } */
+}
